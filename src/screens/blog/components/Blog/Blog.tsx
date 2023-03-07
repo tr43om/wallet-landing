@@ -1,20 +1,19 @@
 import React from "react";
-import styled from "styled-components";
+import styled, { useTheme } from "styled-components";
 import media from "styled-media-query";
 import { BlogType } from "types";
+import { ReactComponent as ChevronRight } from "assets/icons/other/chevron-top.svg";
+import { useMediaQuery } from "react-responsive";
 
 interface BlogProps extends BlogType {
   fullwidth?: boolean;
 }
 
-const Blog = ({
-  date,
-  description,
-  imageUrl,
-  title,
-  fullwidth,
-  author,
-}: BlogProps) => {
+const Blog = ({ date, imageUrl, title, author }: BlogProps) => {
+  const { devices } = useTheme();
+  const isDesktop = useMediaQuery({
+    query: devices.desktop,
+  });
   return (
     <Root>
       <BlogInfo $imgUrl={imageUrl}>
@@ -28,6 +27,12 @@ const Blog = ({
           <AuthorPosition>{author.position}</AuthorPosition>
         </AuthorAbout>
       </Author>
+      {!isDesktop && (
+        <LinkContainer>
+          <Link>Read full article</Link>
+          <StyledChevronRight />
+        </LinkContainer>
+      )}
     </Root>
   );
 };
@@ -131,6 +136,44 @@ const Date = styled.span`
     font: ${({ theme }) => theme.variants.body5};
     
   `}
+`;
+
+const LinkContainer = styled.div`
+  display: flex;
+  gap: 0.5rem;
+  align-items: center;
+  transition: all 0.3s;
+
+  &:hover,
+  &:focus {
+    gap: 0.7rem;
+  }
+
+  & > svg > path {
+    fill: ${({ theme }) => theme.colors.primaryBlue};
+  }
+
+  &:hover > svg > path {
+    fill: ${({ theme }) => theme.colors.secondaryPressed};
+  }
+`;
+
+const Link = styled.a`
+  all: unset;
+
+  color: ${({ theme }) => theme.colors.primaryBlue};
+  font: ${({ theme }) => theme.variants.body6};
+  transition: all 0.3s;
+
+  &:hover,
+  &:focus {
+    text-decoration: underline;
+    color: ${({ theme }) => theme.colors.secondaryPressed};
+  }
+`;
+
+const StyledChevronRight = styled(ChevronRight)`
+  transform: rotate(90deg);
 `;
 
 export default Blog;

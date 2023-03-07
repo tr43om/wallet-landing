@@ -8,6 +8,7 @@ import {
   Footer,
   FaqsScreen,
 } from "./screens";
+import { CtaBanner } from "components";
 
 function App() {
   return (
@@ -19,6 +20,7 @@ function App() {
         <LocationScreen />
         <ContactScreen />
         <FaqsScreen />
+        <CtaBanner />
       </main>
       <Footer />
     </>

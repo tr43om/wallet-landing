@@ -22,6 +22,7 @@ const Checkbox = ({ checked, toggle, id }: InputProps) => {
 const CheckboxContainer = styled.div`
   display: inline-block;
   vertical-align: middle;
+  cursor: pointer;
 `;
 
 const HiddenCheckbox = styled.input.attrs({ type: "checkbox" })`

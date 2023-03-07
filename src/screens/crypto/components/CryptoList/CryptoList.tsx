@@ -50,10 +50,10 @@ const Crypto = styled.li`
   max-width: 100%;
   cursor: pointer;
   transition: background-color 0.3s;
+  border-radius: 12px;
 
   &:hover {
     background-color: ${({ theme }) => theme.colors.grayExtraLight};
-    border-radius: 12px;
   }
 
   ${media.greaterThan("large")`

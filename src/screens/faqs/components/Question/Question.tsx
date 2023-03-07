@@ -18,7 +18,7 @@ const Question = ({ question, answer, iconUrl }: QuestionProps) => {
     <Root onClick={toggle}>
       <Icon src={iconUrl} alt={question} />
       <QuestionText>{question}</QuestionText>
-      {opened ? (
+      {!opened ? (
         <ExtendIcon style={{ marginLeft: "auto" }} />
       ) : (
         <ShrinkIcon style={{ marginLeft: "auto" }} />

@@ -35,12 +35,18 @@ const Root = styled.div`
   display: flex;
   gap: 0.8rem;
   align-items: center;
+  cursor: pointer;
 `;
 
-const Label = styled.label``;
+const Label = styled.label`
+  user-select: none;
+  cursor: pointer;
+`;
 
 const Radio = styled.input`
   -webkit-appearance: none;
+  cursor: pointer;
+
   appearance: none;
   margin: 0;
   width: 1.5em;

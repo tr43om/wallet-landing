@@ -188,6 +188,7 @@ const FormContainer = styled.form`
 
 const CheckboxLabel = styled.label`
   color: #797979;
+  cursor: pointer;
 `;
 
 const TermsContainer = styled.div`
