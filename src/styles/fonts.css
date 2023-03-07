@@ -1,0 +1,32 @@
+@font-face {
+  font-family: "PlexBold";
+  src: local("IMBPlexSans-Bold"),
+    url("../assets/fonts/IBMPlexSans/IBMPlexSans-Bold.ttf") format("truetype");
+
+  font-weight: 700;
+  font-style: normal;
+}
+@font-face {
+  font-family: "PlexSemiBold";
+  src: url("../assets/fonts/IBMPlexSans/IBMPlexSans-SemiBold.ttf")
+    format("truetype");
+
+  font-weight: 600;
+  font-style: normal;
+}
+@font-face {
+  font-family: "PlexMedium";
+  src: url("../assets/fonts/IBMPlexSans/IBMPlexSans-Medium.ttf")
+    format("truetype");
+
+  font-weight: 500;
+  font-style: normal;
+}
+@font-face {
+  font-family: "Plex";
+  src: url("../assets/fonts/IBMPlexSans/IBMPlexSans-Regular.ttf")
+    format("truetype");
+
+  font-weight: 400;
+  font-style: normal;
+}
