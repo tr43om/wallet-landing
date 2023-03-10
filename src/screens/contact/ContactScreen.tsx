@@ -13,11 +13,18 @@ const ContactScreen = () => {
   });
   return (
     <Container>
-      <Root>
-        {!isDesktop && <Title>Contact us</Title>}
+      <Root id="contact-us">
         <Content>
+          {!isDesktop && <Title>Contact us</Title>}
           <MembersList />
-          <ContactForm />
+
+          <Wrapper>
+            <Header>
+              {isDesktop && <Title>Contact us</Title>}
+              <Subtitle>Use this form to reach out to us</Subtitle>
+            </Header>
+            <ContactForm />
+          </Wrapper>
         </Content>
       </Root>
     </Container>
@@ -32,12 +39,29 @@ const Root = styled.div`
   `}
 `;
 
+const Wrapper = styled.div`
+  display: grid;
+
+  flex-grow: 1;
+  max-width: 480px;
+`;
+
+const Header = styled.header`
+  justify-self: center;
+
+  ${media.greaterThan("large")`
+    margin-bottom: 20px;
+    justify-self: start;
+  `}
+`;
+
 const Content = styled.div`
   display: grid;
-  gap: 3rem;
+
   ${media.greaterThan("large")`
+    gap: 6.5rem;
     display: flex;
-    justify-content: space-between;
+    
   `}
 `;
 
@@ -48,8 +72,20 @@ const Title = styled.h2`
 
   ${media.greaterThan("large")`
     font: ${({ theme }) => theme.variants.title2};
-    margin-bottom: 1.25rem;
-    
+    margin-bottom: 20px;
+    order: 1;
+  `}
+`;
+
+const Subtitle = styled.p`
+  font: ${({ theme }) => theme.variants.body5};
+  color: #9b9b9b;
+  margin-bottom: 20px;
+  margin-top: 25px;
+
+  ${media.greaterThan("large")`
+    margin: 0;
+    font: ${({ theme }) => theme.variants.body4};
   `}
 `;
 

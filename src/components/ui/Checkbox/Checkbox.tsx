@@ -9,7 +9,12 @@ interface InputProps {
 const Checkbox = ({ checked, toggle, id }: InputProps) => {
   return (
     <CheckboxContainer onClick={toggle}>
-      <HiddenCheckbox checked={checked} type="checkbox" id={id} />
+      <HiddenCheckbox
+        checked={checked}
+        type="checkbox"
+        id={id}
+        onChange={toggle}
+      />
       <StyledCheckbox $checked={checked}>
         <Icon viewBox="0 0 24 24">
           <polyline points="20 6 9 17 4 12" />

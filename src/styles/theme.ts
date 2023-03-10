@@ -63,11 +63,11 @@ const breakpoints = {
   mobileL: "425",
   tablet: "768",
   laptop: "1170",
-  desktop: "1400",
+  desktop: "1440",
 };
 
 const devices = {
-  mobile: `(min-width: ${breakpoints.mobileL}px)`,
+  mobile: `(min-width: ${breakpoints.mobileS}px)`,
   tabletAndBelow: `(max-width: ${breakpoints.tablet}px)`,
   laptopAndBelow: `(max-width: ${breakpoints.laptop}px)`,
   desktop: `(min-width: ${breakpoints.laptop}px)`,

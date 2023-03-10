@@ -8,7 +8,7 @@ const CryptoList = ({ expanded }: { expanded: boolean }) => {
   return (
     <Root>
       {cryptos
-        .slice(0, expanded ? cryptos.length : 9)
+        .slice(0, expanded ? cryptos.length : 10)
         .map(({ icon, name, shortname }, i) => (
           <Crypto key={shortname}>
             <CryptoIcon src={icon} alt={name} />
@@ -18,7 +18,7 @@ const CryptoList = ({ expanded }: { expanded: boolean }) => {
             </CryptoNameContainer>
           </Crypto>
         ))}
-      <CryptoPlaceholder>And many others</CryptoPlaceholder>
+      {expanded && <CryptoPlaceholder>And many others</CryptoPlaceholder>}
     </Root>
   );
 };
@@ -26,18 +26,20 @@ const CryptoList = ({ expanded }: { expanded: boolean }) => {
 const Root = styled.ul`
   all: unset;
   display: grid;
-  column-gap: 1.5rem;
-  row-gap: 1rem;
+  column-gap: 20px;
+  row-gap: 21px;
   margin-bottom: 2.5rem;
 
   grid-template-columns: repeat(
     auto-fit,
-    minmax(min(100%/2, max(10rem, 100%/5)), 1fr)
+    minmax(min(100%/2, max(9rem, 100%/5)), 1fr)
   );
 
   ${media.greaterThan("large")`
-     gap: 2rem;
-    
+    row-gap: 16px;
+    column-gap: 5px;
+    margin-left: -15px;
+    margin-top: -15.5px;
   `}
 `;
 
@@ -57,8 +59,7 @@ const Crypto = styled.li`
   }
 
   ${media.greaterThan("large")`
-  padding: 1rem;
-    
+    padding: 15.5px 15px;
   `}
 `;
 
@@ -81,7 +82,8 @@ const CryptoNameContainer = styled.div`
 `;
 
 const CryptoShortName = styled.p`
-  font: ${({ theme }) => theme.variants.body3};
+  font-size: 16px;
+  font-weight: 700;
   color: ${({ theme }) => theme.colors.primaryDark};
 `;
 
@@ -98,19 +100,22 @@ const CryptoFullName = styled.span`
 
 const CryptoPlaceholder = styled.div`
   max-height: 2.8rem;
-  padding: 0.5rem 1rem;
   display: flex;
+  justify-self: start;
   align-items: center;
   justify-content: center;
   color: ${({ theme }) => theme.variants.secondaryActiveText};
   border: 1px dashed #9b9b9b;
   border-radius: 8px;
+  padding: 6px 17px;
+
   font: ${({ theme }) => theme.variants.body7};
 
   ${media.greaterThan("large")`
     font: ${({ theme }) => theme.variants.body3};
-    margin-left: 1rem;
+    margin: 15.5px;
 
+    
     
   `}
 `;

@@ -19,9 +19,9 @@ const Button = styled.button`
 
   font: ${({ theme }) => theme.variants.body3};
   border-radius: 4px;
-  padding: 0.75rem 1.75rem;
+  padding: 11px 40px;
   color: ${({ theme }) => theme.colors.primaryWhite};
-  outline: 1px solid ${({ theme }) => theme.colors.primaryLavanda};
+  border: 1px solid ${({ theme }) => theme.colors.primaryLavanda};
   ${media.greaterThan("medium")`
   font: ${({ theme }) => theme.variants.body4};
 

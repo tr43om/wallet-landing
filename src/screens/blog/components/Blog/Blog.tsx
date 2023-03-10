@@ -50,6 +50,11 @@ const Author = styled.div`
 const AuthorAbout = styled.div``;
 const Avatar = styled.img`
   border-radius: 50%;
+  max-width: 38px;
+
+  ${media.greaterThan("large")`
+    max-width: none;
+  `}
 `;
 const AuthorName = styled.p`
   font: ${({ theme }) => theme.variants.body7};
@@ -140,9 +145,10 @@ const Date = styled.span`
 
 const LinkContainer = styled.div`
   display: flex;
-  gap: 0.5rem;
+  gap: 0.7rem;
   align-items: center;
   transition: all 0.3s;
+  margin-top: 10px;
 
   &:hover,
   &:focus {

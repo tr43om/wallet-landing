@@ -18,7 +18,7 @@ const Button = styled.button`
   white-space: nowrap;
   font: ${({ theme }) => theme.variants.body3};
   border-radius: 4px;
-  padding: 0.75rem 1.75rem;
+  padding: 12px 26px;
   background-color: ${({ theme }) => theme.colors.primaryBlue};
   color: ${({ theme }) => theme.colors.primaryWhite};
   transition: all 0.3s;
@@ -26,7 +26,8 @@ const Button = styled.button`
   ${media.greaterThan("medium")`
   font: ${({ theme }) => theme.variants.body4};
 
-    padding-inline: 2.2rem;
+
+    padding-inline: 35px;
   `}
 
   &:hover, &:focus {

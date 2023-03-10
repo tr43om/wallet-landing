@@ -45,11 +45,7 @@ const ContactForm = () => {
   const [loading, setLoading] = useState(false);
   const [country, setCountry] = useState<CountryType>({} as CountryType);
   const [checked, setChecked] = useState(false);
-
-  const { devices } = useTheme();
-  const isDesktop = useMediaQuery({
-    query: devices.desktop,
-  });
+  const [sex, setSex] = useState("male");
 
   const methods = useForm<ContactFormDto>({
     resolver: yupResolver(schema),
@@ -60,8 +56,6 @@ const ContactForm = () => {
     formState: { errors, isValid, isSubmitted },
     reset,
   } = methods;
-
-  console.log(errors);
 
   useEffect(() => {
     (async () => {
@@ -106,8 +100,6 @@ const ContactForm = () => {
           reset();
         })}
       >
-        {isDesktop && <Title>Contact us</Title>}
-
         <Input label="Email" placeholder="nick@example.com" name="email" />
 
         <Input
@@ -117,24 +109,32 @@ const ContactForm = () => {
           mask={`${country.idd} (999) 999-99-99`}
         />
 
-        <Fieldset $gap={60}>
+        <Fieldset $gap={60} $mb={5}>
           {!loading && (
             <Select
               options={countries}
               chooseOption={(option) => setCountry(option)}
               selected={country}
               isLight={true}
+              label="Country"
             />
           )}
-          <Fieldset $gap={30}>
+          <Fieldset $gap={30} $mt={15}>
             <RadioButton
               id="male"
+              value="male"
               label="Man"
-              key="sex1"
               name="sex"
+              onChange={(e) => setSex(e.target.value)}
               defaultChecked={true}
             />
-            <RadioButton id="female" label="Woman" key="sex2" name="sex" />
+            <RadioButton
+              id="female"
+              value="female"
+              label="Woman"
+              name="sex"
+              defaultChecked={false}
+            />
           </Fieldset>
         </Fieldset>
 
@@ -142,7 +142,7 @@ const ContactForm = () => {
           label="Message"
           maxLength={MESSAGE_LIMIT}
           name="message"
-          placeholder="Enter your message here..."
+          placeholder="Enter your message here"
         />
 
         <TermsContainer>
@@ -155,13 +155,13 @@ const ContactForm = () => {
           />
           <CheckboxLabel htmlFor="acceptTerms">
             By clicking on the button, you consent to the processing of{" "}
-            <Link>data processing</Link> and compiled with{" "}
+            <Link>data processing</Link>. <br /> and compiled with{" "}
             <Link>confidentiality documents</Link>
           </CheckboxLabel>
         </TermsContainer>
 
-        <SecondaryButton
-          title="Send Message"
+        <StyledSecondaryButton
+          title="Send message"
           type="submit"
           disabled={isSubmitted && !isValid && !checked}
         />
@@ -170,23 +170,32 @@ const ContactForm = () => {
   );
 };
 
-const Title = styled.h2`
-  font: ${({ theme }) => theme.variants.title2};
-  margin-bottom: 20px;
+const StyledSecondaryButton = styled(SecondaryButton)`
+  margin-top: 10px;
+  max-width: 244px;
+
+  ${media.greaterThan("large")`
+    max-width: 200px !important;
+  `}
 `;
 
 const FormContainer = styled.form`
   display: grid;
-  gap: 1.5rem;
+  gap: 1.1rem;
   max-width: 30rem;
   margin: 0 auto;
+  padding-inline: 11px;
 
   ${media.greaterThan("large")`
+    gap: 1.5rem;
+
     margin: 0;
+    padding: 0;
   `}
 `;
 
 const CheckboxLabel = styled.label`
+  font: ${({ theme }) => theme.variants.caption1};
   color: #797979;
   cursor: pointer;
 `;
@@ -194,19 +203,33 @@ const CheckboxLabel = styled.label`
 const TermsContainer = styled.div`
   display: flex;
   gap: 1rem;
-  align-items: center;
+  align-items: start;
+  margin-top: -5px;
+
+  ${media.greaterThan("large")`
+    align-items: center;
+    margin-top: -25px;
+  `}
 `;
 
 const Link = styled.span`
   text-decoration: underline;
 `;
-const Fieldset = styled.fieldset<{ $gap?: number }>`
+const Fieldset = styled.fieldset<{ $gap?: number; $mt?: number; $mb?: number }>`
   all: unset;
   display: flex;
   flex-wrap: wrap;
-
+  justify-content: space-between;
   column-gap: ${({ $gap }) => `${$gap}px`};
-  row-gap: 1.5rem;
+  margin-top: ${({ $mt }) => `${$mt}px`};
+  margin-bottom: ${({ $mb }) => `${$mb}px`};
+
+  row-gap: 15px;
+
+  ${media.greaterThan("large")`
+    row-gap: 1.5rem;
+    margin-bottom: 0;
+  `}
 `;
 
 export default ContactForm;

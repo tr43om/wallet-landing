@@ -171,13 +171,13 @@ export const locations: LocationType[] = [
 
 export const members: MemberType[] = [
   {
-    name: "Arlene McCoy",
+    name: "Ralph Edwards",
     position: "Community manager",
     photoUrl: member1,
   },
 
   {
-    name: "Ralph Edwards",
+    name: "Arlene McCoy",
     position: "Community manager",
     photoUrl: member2,
   },
@@ -192,7 +192,7 @@ export const faqs: FAQType[] = [
   },
 
   {
-    question: "Status Migration",
+    question: "Status migration",
     answer:
       "Lorem ipsum, dolor sit amet consectetur adipisicing elit. Dicta ipsam repellendus voluptas voluptate dolores rerum aspernatur itaque totam exercitationem architecto sequi eum est, eaque perferendis pariatur error illo reiciendis saepe.",
     iconUrl: StatusMigrationIcon,

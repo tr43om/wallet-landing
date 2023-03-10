@@ -12,7 +12,11 @@ const Pagination = ({ active }: PaginationProps) => {
   return (
     <Root>
       {swiper.slides.map((_, i) => (
-        <Bullet $isActive={i === active}></Bullet>
+        <Bullet
+          key={i}
+          $isActive={i === active}
+          onClick={() => swiper.slideTo(i)}
+        />
       ))}
     </Root>
   );
@@ -22,7 +26,7 @@ const Root = styled.div`
   display: flex;
   justify-content: center;
   gap: 4px;
-  margin-top: 3rem;
+  margin-top: 49px;
 `;
 
 const Bullet = styled.div<{ $isActive: boolean }>`

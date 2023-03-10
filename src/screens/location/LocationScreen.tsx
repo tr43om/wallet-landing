@@ -1,9 +1,10 @@
 import React from "react";
 import styled from "styled-components";
-import { Container } from "components";
+import { Container, ResponsiveImage } from "components";
 import media from "styled-media-query";
 import { LocationsList } from "./components";
-import mapIllustration from "assets/illustrations/map.webp";
+import desktopMap from "assets/illustrations/desktop-map.webp";
+import mobileMap from "assets/illustrations/mobile-map.webp";
 
 const LocationScreen = () => {
   return (
@@ -14,13 +15,23 @@ const LocationScreen = () => {
           <LocationsList />
         </Content>
 
-        <IllustrationContainer>
-          <Illustration src={mapIllustration} />
-        </IllustrationContainer>
+        <StyledResponsiveImage
+          fallback={desktopMap}
+          mobile={mobileMap}
+          desktop={desktopMap}
+          alt="where we are map"
+        />
       </Root>
     </Container>
   );
 };
+
+const StyledResponsiveImage = styled(ResponsiveImage)`
+  ${media.greaterThan("large")`
+    flex-basis: 50%;
+     margin-top: -65px;
+  `}
+`;
 
 const Root = styled.div`
   display: grid;
@@ -28,12 +39,18 @@ const Root = styled.div`
   justify-content: center;
   margin: 0 auto;
   margin-bottom: 2.5rem;
+  position: relative;
+  margin-bottom: 3.4rem;
+
+  & > picture {
+    flex-basis: 50%;
+  }
 
   ${media.greaterThan("medium")`
     margin: 0;
     display: flex;
-    margin-bottom: 6.5rem;
-
+    margin-bottom: 10rem;
+    justify-content: space-between;
   `}
 `;
 
@@ -41,14 +58,8 @@ const Content = styled.div`
   flex-basis: 70%;
 
   ${media.greaterThan("large")`
-    flex-basis: auto;
+    flex-basis: 40%;
   `}
-`;
-
-const IllustrationContainer = styled.div``;
-
-const Illustration = styled.img`
-  max-width: 100%;
 `;
 
 const Title = styled.h2`

@@ -24,7 +24,7 @@ const StyledBurger = styled.button<{ $open: boolean }>`
   z-index: 999;
   top: 1rem;
   left: 0;
-  width: 1.25rem;
+  width: 22px;
   gap: 4px;
   background: transparent;
   border: none;
@@ -38,7 +38,8 @@ const StyledBurger = styled.button<{ $open: boolean }>`
   div {
     transform-origin: 2px;
 
-    width: 1.25rem;
+    width: 22px;
+
     height: 2px;
     background: #fff;
     border-radius: 10px;

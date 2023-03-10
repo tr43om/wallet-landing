@@ -11,13 +11,13 @@ const Container = ({ children }: ContainerProps) => {
 };
 
 const Wrapper = styled.section`
-  padding-inline: 1rem;
+  padding-inline: 24px;
   position: relative;
   margin: 0 auto;
   max-width: ${({ theme }) => `${theme.breakpoints.desktop}px`};
 
   ${media.greaterThan("medium")`
-    padding-inline: 5rem;
+    padding-inline: 80px;
   `}
 `;
 

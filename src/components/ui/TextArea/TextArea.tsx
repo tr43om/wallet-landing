@@ -2,6 +2,7 @@ import React, { InputHTMLAttributes, TextareaHTMLAttributes } from "react";
 import { useFormContext } from "react-hook-form";
 import styled from "styled-components";
 import { Error } from "../Error";
+import media from "styled-media-query";
 
 interface TextAreaProps extends TextareaHTMLAttributes<HTMLTextAreaElement> {
   label: string;
@@ -65,7 +66,7 @@ const StyledTextArea = styled.textarea<{
   resize: none;
   outline: none;
   color: ${({ theme }) => theme.colors.primaryDark};
-  padding: 13px 16px;
+  padding: 12px 16px;
   border-radius: 4px;
   background: #f7f7f7;
   transition: all 0.3s;
@@ -87,6 +88,10 @@ const StyledTextArea = styled.textarea<{
     border-color: ${({ theme, $error }) =>
       !$error ? theme.colors.primaryBlue : theme.colors.accent};
   }
+
+  ${media.lessThan("medium")`
+    font: ${({ theme }) => theme.variants.caption2}
+  `}
 `;
 
 const Label = styled.label`

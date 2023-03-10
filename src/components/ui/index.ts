@@ -7,3 +7,4 @@ export * from "./Error";
 export * from "./Input";
 export * from "./RadioButton";
 export * from "./Checkbox";
+export * from "./ResponsiveImage";

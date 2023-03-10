@@ -9,6 +9,7 @@ import appMobileIllustration from "assets/illustrations/app-mobile.webp";
 import appDesktopIllustration from "assets/illustrations/app-desktop.webp";
 
 import media from "styled-media-query";
+import { ResponsiveImage } from "components";
 
 const Hero = () => {
   return (
@@ -50,21 +51,27 @@ const Hero = () => {
         </CTAContainer>
       </Content>
 
-      <MobileIllustration
-        alt="mobile app illustration"
-        src={appMobileIllustration}
-        width={235}
+      <StyledResponsiveImage
+        fallback={appDesktopIllustration}
+        mobile={appMobileIllustration}
+        desktop={appDesktopIllustration}
+        alt="hero illustration"
       />
-
-      <IllustrationContainer $maxWidth={51.25}>
-        <DesktopIllustration
-          alt="desktop app illustration"
-          src={appDesktopIllustration}
-        />
-      </IllustrationContainer>
     </HeroContainer>
   );
 };
+
+const StyledResponsiveImage = styled(ResponsiveImage)`
+  max-width: 235px;
+  margin-bottom: -5px;
+
+  ${media.greaterThan("large")`
+    max-width: 100%;
+    margin-bottom: 0px;
+    padding-left: 62px;
+    padding-top: 22px;
+  `}
+`;
 
 const HeroContainer = styled.div`
   display: grid;
@@ -73,11 +80,9 @@ const HeroContainer = styled.div`
   ${media.greaterThan("large")`
     text-align: left;
     display: flex;
-  align-items: end;
-  padding-bottom: 7.75rem;
-
-    
-    
+    gap: 8px;
+    align-items: center;
+    padding-bottom: 7.75rem;
   `}
 `;
 const Title = styled.h1`
@@ -93,12 +98,13 @@ const Title = styled.h1`
 const Content = styled.div`
   margin: 0 auto;
 
-  max-width: 19rem;
+  max-width: 21rem;
 
   ${media.greaterThan("large")`
+    margin: 0;
     text-align: left;
     min-width: 25rem;
-  max-width: 28rem;
+    max-width: 30rem;
 
   `}
 `;
@@ -115,11 +121,14 @@ const Description = styled.p`
 
 const CTAContainer = styled.div`
   display: flex;
-  gap: 1.5rem;
-  margin-bottom: 5.75rem;
+  justify-content: space-around;
+  padding-bottom: 85px;
 
   ${media.greaterThan("large")`
     gap: 2rem;
+    padding-bottom: 0px;
+  justify-content: start;
+
 
   `}
 `;
@@ -134,7 +143,6 @@ const StyledGetItOnAppStoreIcon = styled(GetItOnAppStoreIcon)`
 
 const ButtonContainer = styled.div`
   display: grid;
-  gap: 1rem;
 `;
 
 const Stat = styled.div`
@@ -161,7 +169,7 @@ const ReviewStat = styled.div`
 
 const MobileIllustration = styled.img`
   margin: 0 auto;
-
+  padding-top: 90px;
   ${media.greaterThan("large")`
     display: none;
 
@@ -181,6 +189,11 @@ const DesktopIllustration = styled.img`
 
 const IllustrationContainer = styled.div<{ $maxWidth: number }>`
   max-width: ${({ $maxWidth }) => `${$maxWidth}rem`};
+
+  ${media.greaterThan("large")`
+    margin-right: -28px;
+    
+  `}
 `;
 
 export default Hero;

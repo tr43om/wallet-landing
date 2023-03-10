@@ -17,8 +17,12 @@ const MemberCard = ({ member, isTitleAbove = true }: MemberCardProps) => {
       <TopCard>
         <MemberPhoto $imgUrl={member.photoUrl}>
           <SocialsBadge>
-            <TelegramIcon width={20} height={20} />
-            <EmailIcon width={20} height={20} />
+            <a href="#">
+              <TelegramIcon width={20} height={20} />
+            </a>
+            <a href="#">
+              <EmailIcon width={20} height={20} />
+            </a>
           </SocialsBadge>
         </MemberPhoto>
       </TopCard>
@@ -36,11 +40,14 @@ const BottomCard = styled.div`
   display: grid;
   grid-row-start: 1;
   grid-column-start: 1;
+  text-align: center;
+  overflow: hidden;
+  overflow-y: auto;
 
   align-items: end;
   justify-items: center;
-  padding-block: 2rem;
-  width: 250px;
+  padding-bottom: 40px;
+  padding-top: 30px;
   min-width: 200px;
   aspect-ratio: 1;
   background: #fff;
@@ -49,6 +56,10 @@ const BottomCard = styled.div`
   z-index: 1;
 
   box-shadow: 0px 2.21299px 6.08571px rgba(56, 57, 77, 0.1);
+
+  ${media.greaterThan("large")`
+    text-align: left;
+  `}
 `;
 
 const MemberName = styled.p`
@@ -58,44 +69,6 @@ const MemberName = styled.p`
 
 const MemberPosition = styled.span`
   color: #9b9b9b;
-`;
-
-const Root = styled.div<{ $isTitleAbove: boolean }>`
-  position: relative;
-  display: grid;
-  grid-template-columns: 1fr;
-
-  margin-top: ${({ $isTitleAbove }) => $isTitleAbove && "130px"};
-
-  & > ${BottomCard} {
-    transform: ${({ $isTitleAbove }) =>
-      $isTitleAbove ? "translate(-50px, -130px)" : "translate(50px, 130px)"};
-
-    align-items: ${({ $isTitleAbove }) => $isTitleAbove && "start"};
-  }
-`;
-const TopCard = styled.div`
-  grid-row-start: 1;
-  grid-column-start: 1;
-  position: relative;
-  z-index: 90;
-  min-width: 200px;
-`;
-
-const MemberPhoto = styled.div<{ $imgUrl: string }>`
-  width: 100%;
-  max-width: 250px;
-  min-width: 200px;
-
-  object-fit: cover;
-  aspect-ratio: 1;
-  border-radius: 8px;
-  background-repeat: no-repeat;
-  background-position: center;
-  background-size: cover;
-  display: flex;
-  background-image: ${({ $imgUrl }) => `url(${$imgUrl})`};
-  overflow: hidden;
 `;
 
 const SocialsBadge = styled.div`
@@ -110,11 +83,11 @@ const SocialsBadge = styled.div`
   align-self: end;
   margin: 1rem;
 
-  & > svg > g > path {
+  svg > g > path {
     fill: #fff;
   }
 
-  & > svg {
+  svg {
     cursor: pointer;
     &:hover {
       opacity: 0.5;
@@ -127,6 +100,61 @@ const SocialsBadge = styled.div`
 
     
   `}
+`;
+
+const Root = styled.li<{ $isTitleAbove: boolean }>`
+  all: unset;
+  position: relative;
+  display: grid;
+  grid-template-columns: 1fr;
+
+  margin-top: ${({ $isTitleAbove }) => $isTitleAbove && "130px"};
+
+  margin-left: ${({ $isTitleAbove }) => $isTitleAbove && "auto"};
+
+  & > * {
+    max-width: 244px;
+    min-width: 244px;
+
+    ${media.greaterThan("large")`
+        max-width: 216px;
+        min-width: 215px;
+        
+    `}
+  }
+
+  ${SocialsBadge} {
+    justify-self: ${({ $isTitleAbove }) => $isTitleAbove && "end"};
+  }
+
+  ${BottomCard} {
+    position: relative;
+    ${({ $isTitleAbove }) => `
+      top: ${$isTitleAbove ? "-130px" : "130px"};
+      right: ${$isTitleAbove ? "50px" : "-50px"};
+    `}
+    align-items: ${({ $isTitleAbove }) => $isTitleAbove && "start"};
+  }
+`;
+const TopCard = styled.div`
+  grid-row-start: 1;
+  grid-column-start: 1;
+  position: relative;
+  z-index: 90;
+`;
+
+const MemberPhoto = styled.div<{ $imgUrl: string }>`
+  width: 100%;
+
+  object-fit: cover;
+  aspect-ratio: 1;
+  border-radius: 8px;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+  display: grid;
+  background-image: ${({ $imgUrl }) => `url(${$imgUrl})`};
+  overflow: hidden;
 `;
 
 export default MemberCard;

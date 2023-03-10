@@ -4,12 +4,12 @@ import { ReactComponent as ChevronTopIcon } from "assets/icons/other/chevron-top
 
 import { ReactComponent as CheckIcon } from "assets/icons/other/check.svg";
 import { SelectOptionType } from "types";
-import { useFormContext } from "react-hook-form";
 
 type SelectProps<T> = {
   selected: T;
   isLight?: boolean;
   options: T[];
+  label?: string;
   chooseOption: (option: T) => void;
 };
 
@@ -17,7 +17,9 @@ const Select = <T extends SelectOptionType>({
   selected,
   options,
   chooseOption,
+  label,
   isLight = false,
+  ...rest
 }: SelectProps<T>) => {
   const [opened, setOpened] = useState(false);
 
@@ -25,6 +27,7 @@ const Select = <T extends SelectOptionType>({
 
   return (
     <Root>
+      <Title>{label}</Title>
       <StyledSelect
         tabIndex={0}
         onClick={toggle}
@@ -61,6 +64,7 @@ const Select = <T extends SelectOptionType>({
 const Box = styled.div`
   display: flex;
   align-items: center;
+  color: #fff;
 
   border-radius: 4px;
   background: #515165;
@@ -71,11 +75,25 @@ const Box = styled.div`
   }
 `;
 
+const Label = styled.p`
+  color: #fff;
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+`;
+
+const Title = styled.p`
+  color: ${({ theme }) => theme.colors.secondaryActiveText};
+`;
+
 const Options = styled.ul`
   all: unset;
   display: flex;
   flex-direction: column;
   margin-top: 4px;
+
+  position: absolute;
+  width: 100%;
 
   border-radius: 4px;
   background: #515165;
@@ -105,15 +123,19 @@ const StyledSelect = styled.div<{ $isLight: boolean }>`
     `
         color: ${theme.colors.primaryDark};
 
-        & > ${Box}, & > ${Options} {
+        ${Label} { 
+            color: #1D1D1D;
+         }
+
+        ${Box},  ${Options} {
             background: #f7f7f7;
         }
 
-         & > ${Box} > svg > path {
+         ${Box} > svg > path {
             fill: ${theme.colors.primaryDark};
          }
 
-         & > ${Options} > ${Option} {
+           ${Option} {
             &:hover, &:hover > svg > path {
                 background-color: transparent;
                 color: ${theme.colors.primaryBlue};
@@ -123,13 +145,13 @@ const StyledSelect = styled.div<{ $isLight: boolean }>`
             
          }
 
-         & > ${Options} > ${Option} > svg > path {
+         ${Option} > svg > path {
             stroke: ${theme.colors.primaryDark};
          }
+
+         
   `}
 `;
-
-const Label = styled.p``;
 
 const Icon = styled.img`
   margin-right: 6px;
@@ -140,6 +162,7 @@ const Icon = styled.img`
 `;
 
 const Root = styled.label`
+  flex-grow: 1;
   position: relative;
   cursor: pointer;
 `;

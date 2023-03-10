@@ -18,7 +18,7 @@ const SecondaryButton = ({
   return (
     <Button {...props}>
       {iconStart}
-      {title}
+      <span>{title}</span>
       {iconEnd}
     </Button>
   );
@@ -28,27 +28,30 @@ const Button = styled.button`
   all: unset;
   display: flex;
   align-items: center;
-  gap: 1rem;
   justify-content: center;
   cursor: pointer;
   white-space: nowrap;
   font: ${({ theme }) => theme.variants.body3};
   border-radius: 4px;
-  padding: 0.75rem 1.75rem;
+  width: 100%;
+  max-width: 276px;
+  padding-block: 12.5px;
   background-color: ${({ theme }) => theme.colors.primaryLavanda};
   color: ${({ theme }) => theme.colors.primaryBlue};
   transition: all 0.3s;
+  gap: 16px;
+  margin: 0 auto;
 
   &:disabled {
     color: ${({ theme }) => theme.colors.secondaryPressed};
-
-    background: red;
   }
 
   ${media.greaterThan("medium")`
-  font: ${({ theme }) => theme.variants.body4};
-
-    padding-inline: 2.2rem;
+    font: ${({ theme }) => theme.variants.body4};
+    padding-block: 10px;
+    font-size: 18px;
+    font-weight: 400;
+    margin: 0;
   `}
 
   &:hover, &:focus {

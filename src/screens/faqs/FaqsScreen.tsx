@@ -8,11 +8,11 @@ import { Question } from "./components";
 const FaqsScreen = () => {
   return (
     <Container>
-      <Root>
+      <Root id="faqs">
         <Title>Popular questions</Title>
         <Questions>
-          {faqs.map((faq) => (
-            <Question {...faq} />
+          {faqs.map((faq, i) => (
+            <Question {...faq} key={`question-${faq.question}-${i}`} />
           ))}
         </Questions>
       </Root>
@@ -24,27 +24,30 @@ const Root = styled.div`
   margin-bottom: 3.75rem;
 
   ${media.greaterThan("large")`
-    margin-bottom: 6.5rem;
+    margin-bottom: 7.5rem;
   `}
 `;
 const Questions = styled.ul`
   all: unset;
 
   display: grid;
-  gap: 1.75rem;
+  gap: 1.85rem;
+  margin-inline: 6px;
 
   ${media.greaterThan("large")`
-    gap: 4.125rem;
+
+    margin-inline: 0px;
+    gap: 16px;
   `}
 `;
 const Title = styled.h2`
   font: ${({ theme }) => theme.variants.title9};
-  margin-bottom: 2rem;
+  margin-bottom: 1.5rem;
   order: -2;
 
   ${media.greaterThan("large")`
     font: ${({ theme }) => theme.variants.title2};
-    margin-bottom: 1.25rem;
+    margin-bottom: 2.35rem;
     
   `}
 `;

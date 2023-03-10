@@ -14,7 +14,7 @@ const BlogScreen = () => {
 
   return (
     <Container>
-      <Root>
+      <Root id="blog">
         <Title>Blog</Title>
         {isTabletOrMobile && <Slider />}
         {!isTabletOrMobile && <Blogs />}
@@ -30,10 +30,12 @@ const Root = styled.section`
   justify-content: space-between;
   flex-wrap: wrap;
 
-  margin-bottom: 3rem;
+  margin-bottom: 2.7rem;
+  margin-right: -8px;
 
   ${media.greaterThan("large")`
-    margin-bottom: 11.25rem;
+    margin-bottom: 7.55rem;
+    margin-right: 0px;
     
   `}
 `;
@@ -44,7 +46,7 @@ const Title = styled.h2`
   order: -2;
 
   ${media.greaterThan("large")`
-    font: ${({ theme }) => theme.variants.title3};
+    font: ${({ theme }) => theme.variants.title2};
     margin-bottom: 3.75rem;
     
   `}
@@ -57,6 +59,11 @@ const StyledSecondaryButton = styled(SecondaryButton)`
   ${media.greaterThan("large")`
     order: -1;    
     margin: 0;
+
+  `}
+
+  ${media.lessThan("medium")`
+     max-width: 244px; 
   `}
 `;
 

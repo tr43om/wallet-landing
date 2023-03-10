@@ -42,27 +42,45 @@ const Footer = () => {
           <SocialsContainer>
             <Title>Follow Us</Title>
             <Socials>
-              <FacebookIcon width={38} height={38} />
-              <TwitterIcon width={38} height={38} />
-              <InstagramIcon width={38} height={38} />
-              <YoutubeIcon width={38} height={38} />
+              <a href="#">
+                <FacebookIcon />
+              </a>
+              <a href="#">
+                <TwitterIcon />
+              </a>
+              <a href="#">
+                <InstagramIcon />
+              </a>
+              <a href="#">
+                <YoutubeIcon />
+              </a>
             </Socials>
           </SocialsContainer>
 
           <MenuContainer>
-            <Title>Menu</Title>
+            <Title $mb={15}>Menu</Title>
             <MenuList>
-              <MenuItem>Home</MenuItem>
-              <MenuItem>Wallets</MenuItem>
-              <MenuItem>Merchants</MenuItem>
-              <MenuItem>All transactions</MenuItem>
-              <MenuItem>Contact Us</MenuItem>
+              <MenuItem>
+                <a href="#">Home</a>
+              </MenuItem>
+              <MenuItem>
+                <a href="#wallets">Wallets</a>
+              </MenuItem>
+              <MenuItem>
+                <a href="#merchants">Merchants</a>
+              </MenuItem>
+              <MenuItem>
+                <a href="#transactions">All transactions</a>
+              </MenuItem>
+              <MenuItem>
+                <a href="#contact-us">Contact Us</a>
+              </MenuItem>
             </MenuList>
           </MenuContainer>
 
           {isTabletOrMobile && (
             <ContactContainer>
-              <Title>Need help?</Title>
+              <Title $mb={20}>Need help?</Title>
 
               <ContactFounderContainer>
                 <FounderWrapper>
@@ -71,10 +89,14 @@ const Footer = () => {
                     <FounderName>Allison Carder</FounderName>
                     <FounderSocialsContainer>
                       <FounderSocialsItem>
-                        <TelegramIcon />
+                        <a href="#">
+                          <TelegramIcon />
+                        </a>
                       </FounderSocialsItem>
                       <FounderSocialsItem>
-                        <EmailIcon />
+                        <a href="#">
+                          <EmailIcon />
+                        </a>
                       </FounderSocialsItem>
                     </FounderSocialsContainer>
                   </FounderInfo>
@@ -95,16 +117,20 @@ const Footer = () => {
           )}
           {isDesktop && (
             <ContactContainerDesktop>
-              <Title>24/7 Support</Title>
+              <Title $mb={21}>24/7 Support</Title>
               <ContactContainerDesktopWrapper>
                 <FounderInfo>
                   <FounderName>Write to us</FounderName>
                   <FounderSocialsContainer>
                     <FounderSocialsItem>
-                      <TelegramIcon />
+                      <a>
+                        <TelegramIcon />
+                      </a>
                     </FounderSocialsItem>
                     <FounderSocialsItem>
-                      <EmailIcon />
+                      <a>
+                        <EmailIcon />
+                      </a>
                     </FounderSocialsItem>
                   </FounderSocialsContainer>
                 </FounderInfo>
@@ -156,7 +182,7 @@ const Root = styled.footer`
   padding-bottom: 1rem;
 
   ${media.greaterThan("large")`
-    padding-top: 5rem;
+    padding-top: 84px;
     padding-bottom: 5.8125rem;
     
   `}
@@ -164,23 +190,23 @@ const Root = styled.footer`
 
 const Content = styled.div`
   display: grid;
-  justify-content: center;
+  justify-items: center;
   margin: 0 auto;
-  max-width: 13rem;
 
   ${media.greaterThan("large")`
     justify-content: space-between;
     flex-wrap: wrap;
     display: flex;
-    max-width: 100%;
+    max-width: 1038px;
+    
   `}
 `;
 
-const Title = styled.h3<{ $align?: "left" | "right" }>`
+const Title = styled.h3<{ $align?: "left" | "right"; $mb?: number }>`
   font: ${({ theme }) => theme.variants.body1};
   text-align: ${({ $align }) => ($align ? $align : "center")};
 
-  margin-bottom: 0.8rem;
+  margin-bottom: ${({ $mb }) => ($mb ? `${$mb}px` : "10px")};
 
   ${media.greaterThan("large")`
     text-align: left;
@@ -188,12 +214,17 @@ const Title = styled.h3<{ $align?: "left" | "right" }>`
 `;
 
 const SocialsContainer = styled.div`
-  margin-bottom: 2.375rem;
+  margin-bottom: 2.175rem;
 `;
 
 const Socials = styled.div`
   display: flex;
-  gap: 10px;
+  gap: 5px;
+
+  & > svg {
+    width: 43px;
+    aspect-ratio: 1;
+  }
 `;
 
 const MenuContainer = styled.div`
@@ -202,16 +233,31 @@ const MenuContainer = styled.div`
 
 const MenuList = styled.ul`
   all: unset;
-  margin-bottom: 2rem;
+  margin-bottom: 0.5rem;
   display: flex;
   flex-wrap: wrap;
   gap: 1.5rem;
+  row-gap: 1.1rem;
+
+  max-width: 200px;
+
+  ${media.greaterThan("large")`
+    max-width: none;
+  `}
 `;
 
 const MenuItem = styled.li`
-  all: unset;
+  &,
+  a {
+    all: unset;
+    cursor: pointer;
+  }
   font: ${({ theme }) => theme.variants.body5};
   color: ${({ theme }) => theme.colors.secondaryHoverText};
+
+  &:hover {
+    opacity: 0.7;
+  }
 `;
 
 const ContactContainer = styled.div`
@@ -266,6 +312,7 @@ const FounderSocialsContainer = styled.ul`
 
 const FounderSocialsItem = styled.li`
   all: unset;
+  cursor: pointer;
 
   & > svg > g > path {
     fill: ${({ theme }) => theme.colors.primaryBlue};
@@ -282,12 +329,23 @@ const OtherContactsContainer = styled.div`
   `}
 `;
 
-const OtherContactItem = styled.div`
+const OtherContactItem = styled.a`
+  all: unset;
   display: flex;
   align-items: center;
   gap: 0.5rem;
+  cursor: pointer;
+
+  &:hover p {
+    color: #fff;
+  }
+
+  &:hover svg > path {
+    fill: #fff;
+  }
 
   & > p {
+    all: unset;
     color: ${({ theme }) => theme.colors.secondaryHoverText};
     font: ${({ theme }) => theme.variants.body5};
     text-align: center;
@@ -302,30 +360,38 @@ const LanguageContainer = styled.div`
 `;
 
 const CopyrightContainer = styled.div`
-  padding-top: 1.5rem;
+  padding-top: 2.2rem;
   border-top: 1px solid ${({ theme }) => theme.colors.secondaryHoverText};
 
   text-align: center;
 `;
 
 const CopyrightDescription = styled.p`
+  font: ${({ theme }) => theme.variants.body5};
   color: #a8a8aa;
   margin: 0 auto;
-  margin-bottom: 1.25rem;
+  margin-bottom: 2.25rem;
   max-width: 39rem;
 `;
 
 const StyledLogo = styled(Logo)`
   min-width: 70px;
-  max-width: 119px;
-  margin-bottom: 1.25rem;
+  max-width: 70px;
+  margin-bottom: 0.95rem;
+
+  ${media.greaterThan("large")`
+    max-width: 119px; 
+  `}
 `;
 
 const CopyrightText = styled.p`
   color: #a8a8aa;
+  font: ${({ theme }) => theme.variants.caption2};
 `;
 
-const Highlight = styled.span`
+const Highlight = styled.a`
+  all: unset;
+  cursor: pointer;
   color: #fff;
 `;
 

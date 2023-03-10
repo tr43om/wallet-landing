@@ -39,10 +39,10 @@ const Root = styled.li`
   border-radius: 1rem;
   background: #ffffff;
   box-shadow: 0px 4px 11px rgba(56, 57, 77, 0.1);
-  padding: 1rem 1.5rem;
+  padding: 16px 19px;
 
   ${media.greaterThan("large")`
-    padding: 2.875rem;
+    padding: 40px;
   `}
 `;
 
@@ -53,6 +53,7 @@ const Icon = styled.img`
 
   ${media.greaterThan("large")`
     width: 48px;
+    margin-right: 1.45rem;
   `}
 `;
 

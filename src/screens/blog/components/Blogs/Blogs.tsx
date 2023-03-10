@@ -9,7 +9,9 @@ const Blogs = () => {
   return (
     <Root>
       {blogs.map((blog, i) => (
-        <>{i === 0 ? <FullWidthBlog {...blog} /> : <Blog {...blog} />}</>
+        <div key={i}>
+          {i === 0 ? <FullWidthBlog {...blog} /> : <Blog {...blog} />}
+        </div>
       ))}
     </Root>
   );
@@ -20,17 +22,23 @@ const Root = styled.div`
   display: flex;
   flex-wrap: wrap;
   column-gap: 2.5rem;
-  row-gap: 3.75rem;
+  row-gap: 3.5rem;
   margin-bottom: 4rem;
 
   & > *:first-child {
+    justify-content: start;
     flex-basis: 100%;
+    column-gap: 5.5rem;
   }
 
   & > * {
     flex-basis: calc(50% - 2.5rem);
+    flex-grow: 1;
+
     ${media.greaterThan("large")`
-    flex-basis: calc(33% - 2.5rem);
+      column-gap: 0;
+      justify-content: space-between;
+      flex-basis: 31.2%;
 
     `};
   }

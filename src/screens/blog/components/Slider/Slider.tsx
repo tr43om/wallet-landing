@@ -13,7 +13,7 @@ const Slider = () => {
   return (
     <Root>
       <StyledSwiper
-        slidesPerView={1.3}
+        slidesPerView={1.18}
         spaceBetween={32}
         onSlideChange={(swiper) => setActiveSlide(swiper.activeIndex)}
       >
@@ -30,7 +30,7 @@ const Slider = () => {
 
 const Root = styled.div`
   width: 100%;
-  margin-bottom: 2rem;
+  margin-bottom: 1.7rem;
 `;
 
 const StyledSwiper = styled(Swiper)`

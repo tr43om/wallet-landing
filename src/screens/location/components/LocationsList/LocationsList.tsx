@@ -25,10 +25,12 @@ const LocationsList = () => {
 const List = styled.ul`
   all: unset;
   display: grid;
-  gap: 2rem;
+  gap: 2.4rem;
+  margin-left: 15px;
 
-  ${media.greaterThan("large")`
-    gap: 1.5rem;
+  ${media.greaterThan("medium")`
+    gap: 1.2rem;
+    margin-left: 0;
     
   `}
 `;
@@ -36,7 +38,11 @@ const List = styled.ul`
 const TitleContainer = styled.div`
   display: flex;
   align-items: center;
-  gap: 0.5rem;
+  gap: 0.7rem;
+
+  ${media.greaterThan("large")`
+    gap: 0.3rem;
+  `}
 `;
 
 const Location = styled.li`
@@ -58,7 +64,7 @@ const Location = styled.li`
 
 const StyledPinIcon = styled(PinIcon)`
   height: 17px;
-  aspect-ratio: 1;
+  width: 13px;
 `;
 
 const Title = styled.h3`

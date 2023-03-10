@@ -33,29 +33,26 @@ const CryptoScreen = () => {
 
 const Root = styled.section`
   margin-top: 4.375rem;
-  margin-bottom: 3rem;
+  margin-bottom: 44px;
   display: flex;
   flex-direction: column;
 
   ${media.greaterThan("large")`
-  margin-top: 11.25rem;
-  margin-bottom: 8.125rem;
-
-
-    
+    margin-top: 11.25rem;
+    margin-bottom: 4.125rem;  
   `}
 `;
 
 const Title = styled.h2`
   font: ${({ theme }) => theme.variants.title9};
   color: ${({ theme }) => theme.colors.primaryDark};
-  margin-bottom: 1.5rem;
+  margin-bottom: 1.2rem;
+  max-width: 250px;
 
   ${media.greaterThan("large")`
-  font: ${({ theme }) => theme.variants.title2};
-  margin-bottom: 1.25rem;
-
-    
+    font: ${({ theme }) => theme.variants.title2};
+    margin-bottom: 1.25rem;
+    max-width: none;
   `}
 `;
 
@@ -63,12 +60,14 @@ const Description = styled.p`
   font: ${({ theme }) => theme.variants.body5};
   color: ${({ theme }) => theme.colors.secondaryHoverText};
   margin-bottom: 2.5rem;
-  max-width: 70rem;
+  max-width: 300px;
+  line-height: 19.6px;
 
   ${media.greaterThan("large")`
-  margin-bottom: 3.75rem;
-
+    margin-bottom: 4.25rem;
     
+    max-width: 70rem;
+
   `}
 `;
 

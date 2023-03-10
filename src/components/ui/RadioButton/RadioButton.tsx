@@ -18,13 +18,14 @@ const RadioButton = ({
   ...rest
 }: RadioButtonProps) => {
   return (
-    <Root key={key}>
+    <Root>
       <Radio
         {...rest}
         type="radio"
         id={id}
         disabled={disabled}
         defaultChecked={defaultChecked}
+        key={key}
       />
       <Label htmlFor={id}>{label}</Label>
     </Root>

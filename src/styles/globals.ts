@@ -10,14 +10,14 @@ const GlobalStyle = createGlobalStyle`
 }
 html, body {
   font: ${({ theme: { variants } }) => variants.body4};
-  
+  scroll-behavior: smooth;
   overflow-x: hidden;
   height: 100%;
 }
 body {
   display: flex;
   flex-direction: column;
-  line-height: 1.5;
+  line-height: 1.4;
   -webkit-font-smoothing: antialiased;
   min-height: 100vh;
   background-color: ${({ theme: { colors } }) => colors.background};

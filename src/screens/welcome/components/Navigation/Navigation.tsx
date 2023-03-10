@@ -9,6 +9,8 @@ import { Container } from "components";
 const Navigation = () => {
   const [isMenuOpened, setIsMenuOpened] = useState(false);
 
+  const closeMenu = () => setIsMenuOpened(false);
+
   return (
     <Wrapper>
       <Container>
@@ -20,16 +22,24 @@ const Navigation = () => {
 
           {!isMenuOpened && <StyledLogo />}
           <Menu $opened={isMenuOpened}>
-            <MenuItem>Home</MenuItem>
-            <MenuItem>Blog</MenuItem>
-            <MenuItem>FAQ</MenuItem>
-            <MenuItem $isHidden>About</MenuItem>
+            <MenuItem onClick={closeMenu}>
+              <a href="#">Home</a>
+            </MenuItem>
+            <MenuItem onClick={closeMenu}>
+              <a href="#blog">Blog</a>
+            </MenuItem>
+            <MenuItem onClick={closeMenu}>
+              <a href="#faqs">FAQ</a>
+            </MenuItem>
+            <MenuItem $isHidden onClick={closeMenu}>
+              <a href="#about">About</a>
+            </MenuItem>
           </Menu>
           {!isMenuOpened && (
             <Buttons>
-              <OutlinedLogIn title="Log in" />
-              <PrimaryLogIn title="Log in" />
-              <PrimarySignUp title="Sign up" />
+              <OutlinedLogIn title="Log In" />
+              <PrimaryLogIn title="Log In" />
+              <PrimarySignUp title="Sign Up" />
             </Buttons>
           )}
         </Root>
@@ -39,10 +49,11 @@ const Navigation = () => {
 };
 
 const Wrapper = styled.header`
-  margin-bottom: 5.125rem;
+  margin-bottom: 57px;
 
   ${media.greaterThan("medium")`
-    border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+     margin-bottom: 7.425rem;
+     border-bottom: 1px solid rgba(255, 255, 255, 0.2);
   `};
 `;
 
@@ -62,7 +73,7 @@ const Root = styled.nav<{ $opened: boolean }>`
 const Buttons = styled.div`
   display: flex;
   margin-left: auto;
-  gap: 1.25rem;
+  gap: 23px;
 `;
 
 const OutlinedLogIn = styled(OutlinedButton)`
@@ -79,8 +90,8 @@ const PrimaryLogIn = styled(PrimaryButton)`
 const PrimarySignUp = styled(PrimaryButton)`
   display: none;
   ${media.greaterThan("large")`
-display: flex;
-`}
+    display: flex;
+  `}
 `;
 
 const StyledLogo = styled(Logo)`
@@ -103,12 +114,13 @@ const Menu = styled.ul<{ $opened: boolean }>`
   z-index: 10;
   background: ${({ theme }) => theme.colors.primaryDark};
   overflow: hidden;
-  height: 100vh;
+  height: 100dvh;
+  overflow-y: hidden;
   width: 100vw;
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  gap: 1.5rem;
+  gap: 32px;
 
   ${media.greaterThan("large")`
     position: relative;
@@ -117,7 +129,6 @@ const Menu = styled.ul<{ $opened: boolean }>`
     width: fit-content;
     flex-direction: row;
     margin-left: 10.4rem;
-    
   `}
 `;
 
@@ -125,6 +136,10 @@ const MenuItem = styled.li<{ $isHidden?: boolean }>`
   text-align: center;
   font-size: 1.625rem;
   cursor: pointer;
+
+  a {
+    all: unset;
+  }
 
   ${media.greaterThan("large")`
     display: ${(props) => {
@@ -139,6 +154,8 @@ const MenuItem = styled.li<{ $isHidden?: boolean }>`
     color: ${({ theme }) => theme.colors.primaryWhite};
     transition: color .3s;
   }
+
+  
   `}
 `;
 

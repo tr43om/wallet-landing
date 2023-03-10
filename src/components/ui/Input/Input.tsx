@@ -3,7 +3,7 @@ import { useFormContext } from "react-hook-form";
 import styled from "styled-components";
 import { Error } from "../Error";
 import ReactInputMask from "react-input-mask";
-import { PatternFormat } from "react-number-format";
+import media from "styled-media-query";
 
 interface InputProps extends InputHTMLAttributes<HTMLInputElement> {
   label: string;
@@ -95,6 +95,8 @@ const StyledInput = styled.input<{
         return "#E1E1E4";
       }
     }};
+
+  border: 1px solid red; // FIXXXXXXXXXXX
   &::placeholder {
     color: #9b9b9b;
   }
@@ -104,6 +106,10 @@ const StyledInput = styled.input<{
     border-color: ${({ theme, $error }) =>
       !$error ? theme.colors.primaryBlue : theme.colors.accent};
   }
+
+  ${media.lessThan("medium")`
+    font: ${({ theme }) => theme.variants.caption2}
+  `}
 `;
 
 export default Input;
