@@ -1,6 +1,6 @@
 import React, { useRef, useState } from "react";
 import styled from "styled-components";
-import { ReactComponent as ChevronTopIcon } from "assets/icons/other/chevron-top.svg";
+import { ReactComponent as ChevronTopIcon } from "assets/icons/other/chevron-down.svg";
 
 import { ReactComponent as CheckIcon } from "assets/icons/other/check.svg";
 import { SelectOptionType } from "types";
@@ -19,7 +19,7 @@ const Select = <T extends SelectOptionType>({
   chooseOption,
   label,
   isLight = false,
-  ...rest
+  ...styles
 }: SelectProps<T>) => {
   const [opened, setOpened] = useState(false);
 
@@ -34,7 +34,7 @@ const Select = <T extends SelectOptionType>({
         onBlur={() => setOpened(false)}
         $isLight={isLight}
       >
-        <Box>
+        <Box {...styles}>
           <Icon src={selected.iconUrl || ""} />
           <Label>{selected.label || ""}</Label>
           <StyledChevronIcon $opened={opened} />
@@ -48,6 +48,7 @@ const Select = <T extends SelectOptionType>({
                 onClick={() => {
                   chooseOption(option);
                 }}
+                {...styles}
               >
                 <Icon src={option.iconUrl} />
                 <Label>{option.label}</Label>
@@ -68,7 +69,7 @@ const Box = styled.div`
 
   border-radius: 4px;
   background: #515165;
-  padding: 12px 14px;
+  padding: 12px 20px;
 
   &:hover {
     outline: 1px solid #e1e1e4;
@@ -168,9 +169,8 @@ const Root = styled.label`
 `;
 
 const StyledChevronIcon = styled(ChevronTopIcon)<{ $opened: boolean }>`
-  transform: rotate(180deg);
   transition: all 0.3s;
-  transform: ${({ $opened }) => $opened && "rotate(0deg)"};
+  transform: ${({ $opened }) => $opened && "rotate(180deg)"};
   margin-left: auto;
 
   & > path {

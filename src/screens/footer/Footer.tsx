@@ -1,26 +1,28 @@
-import React, { ChangeEvent, useState } from "react";
+import { useState } from "react";
 import styled, { useTheme } from "styled-components";
-import { ReactComponent as FacebookIcon } from "assets/icons/socials/facebook.svg";
-import { ReactComponent as InstagramIcon } from "assets/icons/socials/instagram.svg";
-import { ReactComponent as TwitterIcon } from "assets/icons/socials/twitter.svg";
-import { ReactComponent as YoutubeIcon } from "assets/icons/socials/youtube.svg";
+import media from "styled-media-query";
+import { useMediaQuery } from "react-responsive";
 
+import { SelectOptionType } from "types";
+import { languages } from "data";
+
+import { Menu, Socials } from "./components";
+import { Container, Select } from "components";
+
+// Contact founder socials
 import { ReactComponent as TelegramIcon } from "assets/icons/socials/telegram.svg";
 import { ReactComponent as EmailIcon } from "assets/icons/socials/email.svg";
+import { ReactComponent as FacebookIcon } from "assets/icons/socials/facebook-alt.svg";
 
+// Other contacts icons
 import { ReactComponent as AtIcon } from "assets/icons/socials/@.svg";
 import { ReactComponent as PhoneIcon } from "assets/icons/socials/phone.svg";
 
+// Logo
 import { ReactComponent as Logo } from "assets/icons/other/logo.svg";
 
-import founder from "assets/photos/founder.webp";
-import { Container, Select } from "components";
-import { languages } from "data";
-
-import media from "styled-media-query";
-
-import { SelectOptionType } from "types";
-import { useMediaQuery } from "react-responsive";
+// Founder photo
+import founder from "assets/photos/default/founder.webp";
 
 const Footer = () => {
   const [language, setLanguage] = useState(languages[0]);
@@ -39,44 +41,8 @@ const Footer = () => {
     <Root>
       <Container>
         <Content>
-          <SocialsContainer>
-            <Title>Follow Us</Title>
-            <Socials>
-              <a href="#">
-                <FacebookIcon />
-              </a>
-              <a href="#">
-                <TwitterIcon />
-              </a>
-              <a href="#">
-                <InstagramIcon />
-              </a>
-              <a href="#">
-                <YoutubeIcon />
-              </a>
-            </Socials>
-          </SocialsContainer>
-
-          <MenuContainer>
-            <Title $mb={15}>Menu</Title>
-            <MenuList>
-              <MenuItem>
-                <a href="#">Home</a>
-              </MenuItem>
-              <MenuItem>
-                <a href="#wallets">Wallets</a>
-              </MenuItem>
-              <MenuItem>
-                <a href="#merchants">Merchants</a>
-              </MenuItem>
-              <MenuItem>
-                <a href="#transactions">All transactions</a>
-              </MenuItem>
-              <MenuItem>
-                <a href="#contact-us">Contact Us</a>
-              </MenuItem>
-            </MenuList>
-          </MenuContainer>
+          <Socials />
+          <Menu />
 
           {isTabletOrMobile && (
             <ContactContainer>
@@ -96,6 +62,11 @@ const Footer = () => {
                       <FounderSocialsItem>
                         <a href="#">
                           <EmailIcon />
+                        </a>
+                      </FounderSocialsItem>
+                      <FounderSocialsItem>
+                        <a href="#">
+                          <FacebookIcon />
                         </a>
                       </FounderSocialsItem>
                     </FounderSocialsContainer>
@@ -132,6 +103,12 @@ const Footer = () => {
                         <EmailIcon />
                       </a>
                     </FounderSocialsItem>
+
+                    <FounderSocialsItem>
+                      <a href="#">
+                        <FacebookIcon />
+                      </a>
+                    </FounderSocialsItem>
                   </FounderSocialsContainer>
                 </FounderInfo>
 
@@ -150,7 +127,7 @@ const Footer = () => {
           )}
           <LanguageContainer>
             <Title $align="left">Language</Title>
-            <Select
+            <StyledSelect
               options={languages}
               chooseOption={changeLanguage}
               selected={language}
@@ -202,6 +179,14 @@ const Content = styled.div`
   `}
 `;
 
+const StyledSelect = styled(Select)`
+  padding-block: 8px;
+  img {
+    width: 22px;
+    border-radius: 0;
+  }
+`;
+
 const Title = styled.h3<{ $align?: "left" | "right"; $mb?: number }>`
   font: ${({ theme }) => theme.variants.body1};
   text-align: ${({ $align }) => ($align ? $align : "center")};
@@ -211,53 +196,6 @@ const Title = styled.h3<{ $align?: "left" | "right"; $mb?: number }>`
   ${media.greaterThan("large")`
     text-align: left;
   `}
-`;
-
-const SocialsContainer = styled.div`
-  margin-bottom: 2.175rem;
-`;
-
-const Socials = styled.div`
-  display: flex;
-  gap: 5px;
-
-  & > svg {
-    width: 43px;
-    aspect-ratio: 1;
-  }
-`;
-
-const MenuContainer = styled.div`
-  margin-bottom: 2rem;
-`;
-
-const MenuList = styled.ul`
-  all: unset;
-  margin-bottom: 0.5rem;
-  display: flex;
-  flex-wrap: wrap;
-  gap: 1.5rem;
-  row-gap: 1.1rem;
-
-  max-width: 200px;
-
-  ${media.greaterThan("large")`
-    max-width: none;
-  `}
-`;
-
-const MenuItem = styled.li`
-  &,
-  a {
-    all: unset;
-    cursor: pointer;
-  }
-  font: ${({ theme }) => theme.variants.body5};
-  color: ${({ theme }) => theme.colors.secondaryHoverText};
-
-  &:hover {
-    opacity: 0.7;
-  }
 `;
 
 const ContactContainer = styled.div`
@@ -340,6 +278,11 @@ const OtherContactItem = styled.a`
     color: #fff;
   }
 
+  svg {
+    width: 16.67px;
+    height: 16.67px;
+  }
+
   &:hover svg > path {
     fill: #fff;
   }
@@ -349,9 +292,13 @@ const OtherContactItem = styled.a`
     color: ${({ theme }) => theme.colors.secondaryHoverText};
     font: ${({ theme }) => theme.variants.body5};
     text-align: center;
+
+    ${media.greaterThan("large")`
+      font: ${({ theme }) => theme.variants.body4};
+    `}
   }
   & > svg > path {
-    fill: #b6b6b6;
+    fill: #e6e6e6;
   }
 `;
 
@@ -372,6 +319,10 @@ const CopyrightDescription = styled.p`
   margin: 0 auto;
   margin-bottom: 2.25rem;
   max-width: 39rem;
+
+  ${media.greaterThan("large")`
+    font: ${({ theme }) => theme.variants.caption1};
+  `}
 `;
 
 const StyledLogo = styled(Logo)`

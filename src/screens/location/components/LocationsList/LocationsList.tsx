@@ -25,22 +25,23 @@ const LocationsList = () => {
 const List = styled.ul`
   all: unset;
   display: grid;
-  gap: 2.4rem;
-  margin-left: 15px;
+  gap: 2.1rem;
+  margin-left: 12px;
 
   ${media.greaterThan("medium")`
     gap: 1.2rem;
     margin-left: 0;
-    
   `}
 `;
 
 const TitleContainer = styled.div`
   display: flex;
-  align-items: center;
-  gap: 0.7rem;
+  gap: 0.55rem;
+  align-items: flex-start;
 
   ${media.greaterThan("large")`
+  align-items: baseline;
+
     gap: 0.3rem;
   `}
 `;
@@ -63,8 +64,13 @@ const Location = styled.li`
 `;
 
 const StyledPinIcon = styled(PinIcon)`
-  height: 17px;
-  width: 13px;
+  height: 18px;
+  width: 18px;
+
+  ${media.greaterThan("large")`
+    height: 17px;
+    width: 21px;
+  `}
 `;
 
 const Title = styled.h3`
@@ -72,8 +78,7 @@ const Title = styled.h3`
   margin-bottom: 0.5rem;
 
   ${media.greaterThan("large")`
-  font: ${({ theme }) => theme.variants.title6};
-    
+    font: ${({ theme }) => theme.variants.title6};  
   `}
 `;
 
@@ -82,8 +87,7 @@ const Address = styled.p`
   color: ${({ theme }) => theme.colors.secondaryHoverText};
 
   ${media.greaterThan("large")`
-  font: ${({ theme }) => theme.variants.body4};
-    
+    font: ${({ theme }) => theme.variants.body4};  
   `}
 `;
 

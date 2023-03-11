@@ -2,9 +2,7 @@ import React from "react";
 import styled from "styled-components";
 import { Container, ResponsiveImage } from "components";
 import media from "styled-media-query";
-import { LocationsList } from "./components";
-import desktopMap from "assets/illustrations/desktop-map.webp";
-import mobileMap from "assets/illustrations/mobile-map.webp";
+import { LocationsList, Map } from "./components";
 
 const LocationScreen = () => {
   return (
@@ -15,41 +13,26 @@ const LocationScreen = () => {
           <LocationsList />
         </Content>
 
-        <StyledResponsiveImage
-          fallback={desktopMap}
-          mobile={mobileMap}
-          desktop={desktopMap}
-          alt="where we are map"
-        />
+        <Map />
       </Root>
     </Container>
   );
 };
 
-const StyledResponsiveImage = styled(ResponsiveImage)`
-  ${media.greaterThan("large")`
-    flex-basis: 50%;
-     margin-top: -65px;
-  `}
-`;
-
 const Root = styled.div`
+  position: relative;
   display: grid;
-  gap: 3rem;
+  gap: 2.2rem;
   justify-content: center;
   margin: 0 auto;
-  margin-bottom: 2.5rem;
+  margin-bottom: 2.2rem;
   position: relative;
-  margin-bottom: 3.4rem;
 
-  & > picture {
-    flex-basis: 50%;
-  }
-
-  ${media.greaterThan("medium")`
+  ${media.greaterThan("large")`
+    gap: 3rem;
     margin: 0;
     display: flex;
-    margin-bottom: 10rem;
+    margin-bottom: 6.2rem;
     justify-content: space-between;
   `}
 `;

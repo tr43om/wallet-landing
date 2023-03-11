@@ -15,7 +15,10 @@ const MemberCard = ({ member, isTitleAbove = true }: MemberCardProps) => {
   return (
     <Root $isTitleAbove={isTitleAbove}>
       <TopCard>
-        <MemberPhoto $imgUrl={member.photoUrl}>
+        <MemberPhoto
+          $imgUrl={member.photoUrl.webp}
+          $retina={member.photoUrl.retina2x}
+        >
           <SocialsBadge>
             <a href="#">
               <TelegramIcon width={20} height={20} />
@@ -59,12 +62,19 @@ const BottomCard = styled.div`
 
   ${media.greaterThan("large")`
     text-align: left;
+    padding-top: 36px;
+    padding-bottom: 36px;
+
   `}
 `;
 
 const MemberName = styled.p`
   font: ${({ theme }) => theme.variants.title7};
   margin-bottom: 1rem;
+
+  ${media.greaterThan("large")`
+    margin-bottom: 0;
+  `}
 `;
 
 const MemberPosition = styled.span`
@@ -83,6 +93,11 @@ const SocialsBadge = styled.div`
   align-self: end;
   margin: 1rem;
 
+  a {
+    height: 20px;
+    width: 20px;
+  }
+
   svg > g > path {
     fill: #fff;
   }
@@ -95,10 +110,8 @@ const SocialsBadge = styled.div`
   }
 
   ${media.greaterThan("large")`
-  padding: 0.5rem 1rem;
-  gap: 1rem;
-
-    
+    padding: 0.5rem 1rem;
+    gap: 0.7rem;
   `}
 `;
 
@@ -108,7 +121,7 @@ const Root = styled.li<{ $isTitleAbove: boolean }>`
   display: grid;
   grid-template-columns: 1fr;
 
-  margin-top: ${({ $isTitleAbove }) => $isTitleAbove && "130px"};
+  margin-top: ${({ $isTitleAbove }) => $isTitleAbove && "110px"};
 
   margin-left: ${({ $isTitleAbove }) => $isTitleAbove && "auto"};
 
@@ -132,10 +145,20 @@ const Root = styled.li<{ $isTitleAbove: boolean }>`
     ${({ $isTitleAbove }) => `
       top: ${$isTitleAbove ? "-130px" : "130px"};
       right: ${$isTitleAbove ? "50px" : "-50px"};
+      
     `}
     align-items: ${({ $isTitleAbove }) => $isTitleAbove && "start"};
+
+    ${media.greaterThan("large")`
+        // @ts-ignore
+        ${({ $isTitleAbove }) => `
+            top: ${$isTitleAbove ? "-109px" : "109px"};
+            right: ${$isTitleAbove ? "66px" : "-66px"};
+        `}
+      `}
   }
 `;
+
 const TopCard = styled.div`
   grid-row-start: 1;
   grid-column-start: 1;
@@ -143,7 +166,7 @@ const TopCard = styled.div`
   z-index: 90;
 `;
 
-const MemberPhoto = styled.div<{ $imgUrl: string }>`
+const MemberPhoto = styled.div<{ $imgUrl: string; $retina?: string }>`
   width: 100%;
 
   object-fit: cover;
@@ -154,6 +177,11 @@ const MemberPhoto = styled.div<{ $imgUrl: string }>`
   background-size: cover;
   display: grid;
   background-image: ${({ $imgUrl }) => `url(${$imgUrl})`};
+
+  @media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) {
+    background-image: ${({ $retina, $imgUrl }) =>
+      $retina ? `url(${$retina})` : `url(${$imgUrl})`};
+  }
   overflow: hidden;
 `;
 

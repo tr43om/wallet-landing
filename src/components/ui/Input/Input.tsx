@@ -96,7 +96,6 @@ const StyledInput = styled.input<{
       }
     }};
 
-  border: 1px solid red; // FIXXXXXXXXXXX
   &::placeholder {
     color: #9b9b9b;
   }

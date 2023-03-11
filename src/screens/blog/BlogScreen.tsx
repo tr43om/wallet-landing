@@ -59,6 +59,7 @@ const StyledSecondaryButton = styled(SecondaryButton)`
   ${media.greaterThan("large")`
     order: -1;    
     margin: 0;
+    max-width: 200px;
 
   `}
 

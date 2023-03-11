@@ -107,6 +107,7 @@ const Description = styled.p`
   margin-bottom: 9.7rem;
   max-width: 314px;
   margin-bottom: -72px;
+  color: #e6e6e6;
 
   ${media.greaterThan("medium")`
     max-width: none;
@@ -148,6 +149,8 @@ const StyledXLMThread = styled(XLMThread)`
 
 const StyledSecondaryButton = styled(SecondaryButton)`
   max-width: 230px;
+  background-color: #f4f5fb;
+  font-size: 16px;
 `;
 
 export default CtaBanner;

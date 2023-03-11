@@ -42,6 +42,12 @@ const Button = styled.button`
   gap: 16px;
   margin: 0 auto;
 
+  span {
+    padding-inline: 10px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+
   &:disabled {
     color: ${({ theme }) => theme.colors.secondaryPressed};
   }

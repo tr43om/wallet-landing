@@ -4,6 +4,7 @@ import media from "styled-media-query";
 import { BlogType } from "types";
 import { ReactComponent as ChevronRight } from "assets/icons/other/chevron-top.svg";
 import { useMediaQuery } from "react-responsive";
+import { ResponsiveImage } from "components";
 
 interface BlogProps extends BlogType {
   fullwidth?: boolean;
@@ -16,12 +17,16 @@ const Blog = ({ date, imageUrl, title, author }: BlogProps) => {
   });
   return (
     <Root>
-      <BlogInfo $imgUrl={imageUrl}>
+      <BlogInfo $imgUrl={imageUrl.webp}>
         <Date>{date}</Date>
         <Title>{title}</Title>
       </BlogInfo>
       <Author>
-        <Avatar src={author.avatarUrl} alt={author.name} />
+        <Avatar
+          fallback={author.avatarUrl.fallback}
+          sources={[`${(author.avatarUrl.webp, author.avatarUrl.retina2x)}`]}
+          alt={author.name}
+        />
         <AuthorAbout>
           <AuthorName>{author.name}</AuthorName>
           <AuthorPosition>{author.position}</AuthorPosition>
@@ -48,13 +53,13 @@ const Author = styled.div`
   `}
 `;
 const AuthorAbout = styled.div``;
-const Avatar = styled.img`
+const Avatar = styled(ResponsiveImage)`
   border-radius: 50%;
   max-width: 38px;
 
   ${media.greaterThan("large")`
-    max-width: none;
-  `}
+      max-width: 52px;
+    `}
 `;
 const AuthorName = styled.p`
   font: ${({ theme }) => theme.variants.body7};
@@ -82,7 +87,7 @@ const Root = styled.article`
   `}
 `;
 
-const BlogInfo = styled.section<{ $imgUrl: string }>`
+const BlogInfo = styled.section<{ $imgUrl: string; $retina?: string }>`
   height: 100%;
   min-height: 200px;
   max-height: 280px;
@@ -94,6 +99,11 @@ const BlogInfo = styled.section<{ $imgUrl: string }>`
   display: grid;
   background-image: ${({ $imgUrl }) => `url(${$imgUrl})`};
   overflow: hidden;
+
+  @media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) {
+    background-image: ${({ $retina, $imgUrl }) =>
+      $retina ? `url(${$retina})` : `url(${$imgUrl})`};
+  }
 
   ${media.greaterThan("medium")`
     max-height: 360px;

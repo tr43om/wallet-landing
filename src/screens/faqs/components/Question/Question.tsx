@@ -39,10 +39,17 @@ const Root = styled.li`
   border-radius: 1rem;
   background: #ffffff;
   box-shadow: 0px 4px 11px rgba(56, 57, 77, 0.1);
-  padding: 16px 19px;
+  padding-block: 16px;
+  padding-right: 19px;
+  padding-left: 15px;
+  font-size: 14px;
 
   ${media.greaterThan("large")`
-    padding: 40px;
+    padding-block: 40px;
+    padding-right: 47px;
+    padding-left: 41px;
+
+    font-size: 16px;
   `}
 `;
 
@@ -61,6 +68,10 @@ const Answer = styled.p`
   flex-basis: 100%;
   padding-top: 1rem;
   color: #9b9b9b;
+
+  ${media.greaterThan("large")`
+    padding-top: 33px;
+  `}
 `;
 
 const QuestionText = styled.h3`

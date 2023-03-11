@@ -31,13 +31,12 @@ const Questions = styled.ul`
   all: unset;
 
   display: grid;
-  gap: 1.85rem;
-  margin-inline: 6px;
+  gap: 2.2rem;
+  margin-inline: 12px;
 
   ${media.greaterThan("large")`
-
+    gap: 22px;
     margin-inline: 0px;
-    gap: 16px;
   `}
 `;
 const Title = styled.h2`

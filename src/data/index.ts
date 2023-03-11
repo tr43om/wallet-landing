@@ -1,3 +1,7 @@
+// Types
+import { CryptoType, BlogType, LocationType, MemberType, FAQType } from "types";
+
+// Crypto icons
 import ACTIcon from "assets/icons/crypto/ACTIcon.svg";
 import BCHIcon from "assets/icons/crypto/BCHIcon.svg";
 import BNTIcon from "assets/icons/crypto/BNTIcon.svg";
@@ -18,18 +22,11 @@ import TRXIcon from "assets/icons/crypto/TRXIcon.svg";
 import USDTIcon from "assets/icons/crypto/USDT.svg";
 import XLMIcon from "assets/icons/crypto/XLMIcon.svg";
 
-import blogImage1 from "assets/photos/blog-1.webp";
-import blogImage2 from "assets/photos/blog-2.webp";
-import blogImage3 from "assets/photos/blog-3.webp";
-import authorAvatar1 from "assets/photos/avatar-1.webp";
-
-import member1 from "assets/photos/monkeyman.webp";
-import member2 from "assets/photos/tamara.webp";
-
+// Flags icons
 import russianFlagIcon from "assets/icons/flags/russia.svg";
-
 import englandFlagIconfrom from "assets/icons/flags/england.svg";
 
+// Questions icons
 import LiquidityIcon from "assets/icons/faq/liquidity.svg";
 import LegalIcon from "assets/icons/faq/legal.svg";
 import RoadmapIcon from "assets/icons/faq/roadmap.svg";
@@ -37,7 +34,36 @@ import SecurityIcon from "assets/icons/faq/security.svg";
 import StatusMigrationIcon from "assets/icons/faq/status-migration.svg";
 import TeamIcon from "assets/icons/faq/team.svg";
 
-import { CryptoType, BlogType, LocationType, MemberType, FAQType } from "types";
+// Blog images
+import blogImage1 from "assets/photos/default/blog-1.webp";
+import blogImage1Fallback from "assets/photos/fallback/blog-1@fallback.png";
+import blogImage1retina from "assets/photos/@2x/blog-1@2x.webp";
+
+import blogImage2 from "assets/photos/default/blog-2.webp";
+import blogImage2Fallback from "assets/photos/fallback/blog-2@fallback.png";
+import blogImage2retina from "assets/photos/@2x/blog-2@2x.webp";
+
+import blogImage3 from "assets/photos/default/blog-3.webp";
+import blogImage3Fallback from "assets/photos/fallback/blog-2@fallback.png";
+import blogImage3retina from "assets/photos/@2x/blog-3@2x.webp";
+
+// Authors photos
+import authorAvatar1 from "assets/photos/default/avatar-1.webp";
+import authorAvatar1Fallback from "assets/photos/fallback/avatar@fallback.png";
+import authorAvatar1retina from "assets/photos/@2x/avatar@2x.webp";
+
+import authorAvatar2 from "assets/photos/default/avatar-2.webp";
+import authorAvatar2Fallback from "assets/photos/fallback/avatar2@fallback.png";
+import authorAvatar2retina from "assets/photos/@2x/avatar2@2x.png";
+
+// Members photos
+import member1 from "assets/photos/default/member1.webp";
+import member1Fallback from "assets/photos/fallback/member1@fallback.png";
+import member1retina from "assets/photos/@2x/member@2x.png";
+
+import member2 from "assets/photos/default/member2.webp";
+import member2Fallback from "assets/photos/fallback/member2@fallback.png";
+import member2retina from "assets/photos/@2x/member1@2x.webp";
 
 export const cryptos: CryptoType[] = [
   { name: "Bitcoin", shortname: "BTC", icon: BTCIcon },
@@ -67,11 +93,19 @@ export const blogs: BlogType[] = [
     title: "How Asset Tokenization Can Help Business Entrepreneurs",
     description:
       "Digital currencies made a lot of buzz in the past 10 years. In addition to a vast amount of terminology (cryptocurrency, blockchain, validation, etc.), hundreds of coins have appeared. But despite the significant figures for market cap, the actual impact on the economy has not yet been felt.",
-    imageUrl: blogImage1,
+    imageUrl: {
+      fallback: blogImage1Fallback,
+      retina2x: blogImage1retina,
+      webp: blogImage1,
+    },
     author: {
       name: "Daniel Frost",
       position: "Сryptocurrency expert",
-      avatarUrl: authorAvatar1,
+      avatarUrl: {
+        fallback: authorAvatar1Fallback,
+        retina2x: authorAvatar1retina,
+        webp: authorAvatar1,
+      },
     },
   },
 
@@ -80,24 +114,40 @@ export const blogs: BlogType[] = [
     title: "How Asset Tokenization Can Help Business Entrepreneurs",
     description:
       "Digital currencies made a lot of buzz in the past 10 years. In addition to a vast amount of terminology (cryptocurrency, blockchain, validation, etc.), hundreds of coins have appeared. But despite the significant figures for market cap, the actual impact on the economy has not yet been felt.",
-    imageUrl: blogImage2,
+    imageUrl: {
+      fallback: blogImage3Fallback,
+      retina2x: blogImage3retina,
+      webp: blogImage3,
+    },
     author: {
       name: "Mark Thompson",
       position: "Entrepreneur",
-      avatarUrl: authorAvatar1,
+      avatarUrl: {
+        fallback: authorAvatar1Fallback,
+        retina2x: authorAvatar1retina,
+        webp: authorAvatar1,
+      },
     },
   },
 
   {
     date: "04 March 2023",
     title:
-      "Приказом генерального директора Пюрвеб, было постановлено назначение Щербакова Амадея на должность главного по всем главным в офисе",
+      "Lacerat tristique orci ornare tortor diam. Vitae faucibus sed odio fringilla facilisis",
     description: "Yes",
-    imageUrl: blogImage3,
+    imageUrl: {
+      fallback: blogImage2Fallback,
+      retina2x: blogImage2retina,
+      webp: blogImage2,
+    },
     author: {
-      name: "Tomas Shelby",
+      name: "Mark Thompson",
       position: "Info Gypsy",
-      avatarUrl: authorAvatar1,
+      avatarUrl: {
+        fallback: authorAvatar2Fallback,
+        retina2x: authorAvatar2retina,
+        webp: authorAvatar2,
+      },
     },
   },
 
@@ -106,50 +156,19 @@ export const blogs: BlogType[] = [
     title: "How Asset Tokenization Can Help Business Entrepreneurs",
     description:
       "Digital currencies made a lot of buzz in the past 10 years. In addition to a vast amount of terminology (cryptocurrency, blockchain, validation, etc.), hundreds of coins have appeared. But despite the significant figures for market cap, the actual impact on the economy has not yet been felt.",
-    imageUrl: blogImage2,
+    imageUrl: {
+      fallback: blogImage1Fallback,
+      retina2x: blogImage1retina,
+      webp: blogImage1,
+    },
     author: {
       name: "Mark Thompson",
       position: "Entrepreneur",
-      avatarUrl: authorAvatar1,
-    },
-  },
-
-  {
-    date: "04 March 2023",
-    title:
-      "Приказом генерального директора Пюрвеб, было постановлено назначение Щербакова Амадея на должность главного по всем главным в офисе",
-    description: "Yes",
-    imageUrl: blogImage3,
-    author: {
-      name: "Tomas Shelby",
-      position: "Info Gypsy",
-      avatarUrl: authorAvatar1,
-    },
-  },
-
-  {
-    date: "01 Aug 2022",
-    title: "How Asset Tokenization Can Help Business Entrepreneurs",
-    description:
-      "Digital currencies made a lot of buzz in the past 10 years. In addition to a vast amount of terminology (cryptocurrency, blockchain, validation, etc.), hundreds of coins have appeared. But despite the significant figures for market cap, the actual impact on the economy has not yet been felt.",
-    imageUrl: blogImage2,
-    author: {
-      name: "Mark Thompson",
-      position: "Entrepreneur",
-      avatarUrl: authorAvatar1,
-    },
-  },
-
-  {
-    date: "04 March 2023",
-    title:
-      "Приказом генерального директора Пюрвеб, было постановлено назначение Щербакова Амадея на должность главного по всем главным в офисе",
-    description: "Yes",
-    imageUrl: blogImage3,
-    author: {
-      name: "Tomas Shelby",
-      position: "Info Gypsy",
-      avatarUrl: authorAvatar1,
+      avatarUrl: {
+        fallback: authorAvatar1Fallback,
+        retina2x: authorAvatar1retina,
+        webp: authorAvatar1,
+      },
     },
   },
 ];
@@ -173,13 +192,21 @@ export const members: MemberType[] = [
   {
     name: "Ralph Edwards",
     position: "Community manager",
-    photoUrl: member1,
+    photoUrl: {
+      fallback: member2Fallback,
+      retina2x: member2retina,
+      webp: member2,
+    },
   },
 
   {
     name: "Arlene McCoy",
     position: "Community manager",
-    photoUrl: member2,
+    photoUrl: {
+      fallback: member1Fallback,
+      retina2x: member1retina,
+      webp: member1,
+    },
   },
 ];
 
@@ -203,10 +230,11 @@ export const faqs: FAQType[] = [
       "Lorem ipsum, dolor sit amet consectetur adipisicing elit. Dicta ipsam repellendus voluptas voluptate dolores rerum aspernatur itaque totam exercitationem architecto sequi eum est, eaque perferendis pariatur error illo reiciendis saepe.",
     iconUrl: TeamIcon,
   },
+
   {
     question: "Roadmap",
     answer:
-      "Lorem ipsum, dolor sit amet consectetur adipisicing elit. Dicta ipsam repellendus voluptas voluptate dolores rerum aspernatur itaque totam exercitationem architecto sequi eum est, eaque perferendis pariatur error illo reiciendis saepe.",
+      "Digital currencies made a lot of buzz in the past 10 years. In addition to a vast amount of terminology (cryptocurrency, blockchain, validation, etc.), hundreds of coins have appeared. But despite the significant figures for market cap, the actual impact on the economy has not yet been felt. Digital currencies made a lot of buzz in the past 10 years. In addition to a vast amount of terminology (cryptocurrency, blockchain, validation, etc.), hundreds of coins have appeared. But despite the significant figures for market cap, the actual impact on the economy has not yet been felt. Digital currencies made a lot of buzz in the past 10 years. In addition to a vast amount of terminology (cryptocurrency, blockchain, validation, etc.), hundreds of coins have appeared. But despite the significant figures for market cap, the actual impact on the economy has not yet been felt.",
     iconUrl: RoadmapIcon,
   },
   {

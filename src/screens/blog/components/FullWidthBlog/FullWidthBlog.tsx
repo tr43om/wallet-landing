@@ -1,3 +1,4 @@
+import { ResponsiveImage } from "components";
 import React from "react";
 import styled from "styled-components";
 import media from "styled-media-query";
@@ -15,13 +16,21 @@ const FullWidthBlog = ({
 }: FullWidthBlogProps) => {
   return (
     <Root>
-      <BlogImage src={imageUrl} alt={author.name} />
+      <ResponsiveImage
+        sources={[`${(imageUrl.webp, imageUrl.retina2x)}`]}
+        fallback={imageUrl.fallback}
+        alt={author.name}
+      />
       <Content>
         <Date>{date}</Date>
         <Title>{title}</Title>
         <Description>{description}</Description>
         <Author>
-          <Avatar src={author.avatarUrl} alt={author.name} />
+          <Avatar
+            fallback={author.avatarUrl.fallback}
+            sources={[`${(author.avatarUrl.webp, author.avatarUrl.retina2x)}`]}
+            alt={author.name}
+          />
           <AuthorAbout>
             <AuthorName>{author.name}</AuthorName>
             <AuthorPosition>{author.position}</AuthorPosition>
@@ -37,9 +46,31 @@ const Root = styled.article`
   gap: 2.5rem;
 
   ${media.greaterThan("large")`
-  gap: 5.525rem;
-    
+    gap: 5.525rem;  
   `}
+
+  & > picture {
+    max-height: 20rem;
+    width: 15rem;
+    flex-basis: 30%;
+    max-inline-size: 100%;
+    block-size: auto;
+    object-fit: cover;
+    align-self: flex-start;
+    border-radius: 8px;
+    display: flex;
+
+    & > img {
+      flex-grow: 1;
+      border-radius: 8px;
+    }
+
+    ${media.greaterThan("large")`
+      flex-basis: 51%;
+      max-height: 417px;
+
+  `}
+  }
 `;
 
 const Description = styled.p`
@@ -63,22 +94,6 @@ const Content = styled.div`
   `}
 `;
 
-const BlogImage = styled.img`
-  max-height: 20rem;
-  width: 15rem;
-  flex-basis: 30%;
-  max-inline-size: 100%;
-  block-size: auto;
-  object-fit: cover;
-  align-self: flex-start;
-  border-radius: 8px;
-
-  ${media.greaterThan("large")`
-    flex-basis: 51%;
-    max-height: 417px;
-  `}
-`;
-
 const Author = styled.div`
   display: flex;
   align-items: center;
@@ -92,8 +107,9 @@ const Author = styled.div`
 
 const AuthorAbout = styled.div``;
 
-const Avatar = styled.img`
+const Avatar = styled(ResponsiveImage)`
   border-radius: 50%;
+  max-width: 52px;
 `;
 
 const AuthorName = styled.p`
