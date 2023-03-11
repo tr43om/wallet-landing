@@ -1,4 +1,4 @@
-import React, { InputHTMLAttributes } from "react";
+import { InputHTMLAttributes } from "react";
 import styled from "styled-components";
 
 interface RadioButtonProps extends InputHTMLAttributes<HTMLInputElement> {
@@ -67,7 +67,7 @@ const Radio = styled.input`
     }
   }
 
-  :focus {
+  :checked {
     outline: 1px solid ${({ theme }) => theme.colors.primaryBlue};
     background-color: ${({ theme }) => theme.colors.primaryBlue};
 

@@ -133,6 +133,7 @@ const ContactForm = () => {
               value="female"
               label="Woman"
               name="sex"
+              checked={true}
               defaultChecked={false}
             />
           </Fieldset>
