@@ -1,10 +1,11 @@
 import React from "react";
-import styled, { useTheme } from "styled-components";
+import styled, { ThemeProps, useTheme } from "styled-components";
 import { MemberType } from "types";
 import { ReactComponent as TelegramIcon } from "assets/icons/socials/telegram.svg";
 import { ReactComponent as EmailIcon } from "assets/icons/socials/email.svg";
-import media from "styled-media-query";
+import media, { MediaGenerator, DefaultBreakpoints } from "styled-media-query";
 import { useMediaQuery } from "react-responsive";
+import { DefaultTheme } from "styled-components";
 
 type MemberCardProps = {
   member: MemberType;
@@ -149,12 +150,13 @@ const Root = styled.li<{ $isTitleAbove: boolean }>`
     `}
     align-items: ${({ $isTitleAbove }) => $isTitleAbove && "start"};
 
-    ${media.greaterThan("large")`
-        // @ts-ignore
-        ${({ $isTitleAbove }) => `
+    ${media.greaterThan<{ $isTitleAbove: boolean }>("large")`
+        ${({ $isTitleAbove }) => {
+          return `
             top: ${$isTitleAbove ? "-109px" : "109px"};
             right: ${$isTitleAbove ? "66px" : "-66px"};
-        `}
+        `;
+        }}
       `}
   }
 `;

@@ -141,9 +141,8 @@ const MenuItem = styled.li<{ $isHidden?: boolean }>`
     all: unset;
   }
 
-  ${media.greaterThan("large")`
+  ${media.greaterThan<{ $isHidden: boolean }>("large")`
     display: ${(props) => {
-      // @ts-ignore
       return props.$isHidden && "none";
     }};
 
