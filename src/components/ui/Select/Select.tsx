@@ -50,7 +50,7 @@ const Select = <T extends SelectOptionType>({
                 }}
                 {...styles}
               >
-                <Icon src={option.iconUrl} />
+                <Icon src={option.iconUrl} alt="option" />
                 <Label>{option.label}</Label>
                 {selected.value === option.value && <StyledCheckIcon />}
               </Option>
@@ -62,7 +62,7 @@ const Select = <T extends SelectOptionType>({
   );
 };
 
-const Box = styled.div`
+const Box = styled.span`
   display: flex;
   align-items: center;
   color: #fff;
@@ -76,14 +76,14 @@ const Box = styled.div`
   }
 `;
 
-const Label = styled.p`
+const Label = styled.span`
   color: #fff;
   display: flex;
   flex-direction: column;
   flex-grow: 1;
 `;
 
-const Title = styled.p`
+const Title = styled.span`
   color: ${({ theme }) => theme.colors.secondaryActiveText};
 `;
 
@@ -113,7 +113,8 @@ const Option = styled.li`
   }
 `;
 
-const StyledSelect = styled.div<{ $isLight: boolean }>`
+const StyledSelect = styled.span<{ $isLight: boolean }>`
+  display: block;
   min-width: 11.875rem;
   &:focus > ${Box} {
     outline: 1px solid #e1e1e4;
@@ -154,10 +155,12 @@ const StyledSelect = styled.div<{ $isLight: boolean }>`
   `}
 `;
 
-const Icon = styled.img`
+const Icon = styled.img.attrs({
+  alt: "option",
+})`
   margin-right: 6px;
   width: 14px;
-  aspect-ratio: 1;
+  aspect-ratio: 1 / 1;
 
   border-radius: 50%;
 `;

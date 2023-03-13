@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import styled, { useTheme } from "styled-components";
 import { Hamburger } from "../Hamburger";
-import { ReactComponent as Logo } from "assets/icons/other/logo.svg";
+import logo from "assets/icons/other/logo.svg";
 import { OutlinedButton, PrimaryButton } from "components/ui";
 import media from "styled-media-query";
 import { Container } from "components";
@@ -20,7 +20,7 @@ const Navigation = () => {
             toggle={() => setIsMenuOpened((open) => !open)}
           />
 
-          {!isMenuOpened && <StyledLogo />}
+          {!isMenuOpened && <Logo src={logo} alt="logo" />}
           <Menu $opened={isMenuOpened}>
             <MenuItem onClick={closeMenu}>
               <a href="#">Home</a>
@@ -94,7 +94,7 @@ const PrimarySignUp = styled(PrimaryButton)`
   `}
 `;
 
-const StyledLogo = styled(Logo)`
+const Logo = styled.img`
   width: 82px;
   height: 28px;
 

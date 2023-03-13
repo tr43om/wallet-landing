@@ -69,7 +69,7 @@ const List = styled.ul`
 
   & > svg {
     width: 43px;
-    aspect-ratio: 1;
+    aspect-ratio: 1 / 1;
   }
 
   ${media.greaterThan("large")`

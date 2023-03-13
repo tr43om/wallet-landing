@@ -10,16 +10,16 @@ import { Menu, Socials } from "./components";
 import { Container, Select } from "components";
 
 // Contact founder socials
-import { ReactComponent as TelegramIcon } from "assets/icons/socials/telegram.svg";
-import { ReactComponent as EmailIcon } from "assets/icons/socials/email.svg";
-import { ReactComponent as FacebookIcon } from "assets/icons/socials/facebook-alt.svg";
+import telegramIcon from "assets/icons/socials/telegram.svg";
+import emailIcon from "assets/icons/socials/email.svg";
+import facebookIcon from "assets/icons/socials/facebook-alt.svg";
 
 // Other contacts icons
 import { ReactComponent as AtIcon } from "assets/icons/socials/@.svg";
 import { ReactComponent as PhoneIcon } from "assets/icons/socials/phone.svg";
 
 // Logo
-import { ReactComponent as Logo } from "assets/icons/other/logo.svg";
+import logo from "assets/icons/other/logo.svg";
 
 // Founder photo
 import founder from "assets/photos/default/founder.webp";
@@ -141,7 +141,7 @@ const Footer = () => {
             fugiat dolore reprehenderit eiusmod officia. Sunt officia et nostrud
             cillum aliquip nostrud aliquip eiusmod est.
           </CopyrightDescription>
-          <StyledLogo />
+          <Logo src={logo} alt="logo" />
           <CopyrightText>
             © 2021 <Highlight>8 Wallet</Highlight> - Premium WordPress news &
             magazine theme by <Highlight>8 Wallet</Highlight>
@@ -325,7 +325,7 @@ const CopyrightDescription = styled.p`
   `}
 `;
 
-const StyledLogo = styled(Logo)`
+const Logo = styled.img`
   min-width: 70px;
   max-width: 70px;
   margin-bottom: 0.95rem;
@@ -345,5 +345,20 @@ const Highlight = styled.a`
   cursor: pointer;
   color: #fff;
 `;
+
+const TelegramIcon = styled.img.attrs({
+  src: telegramIcon,
+  alt: "telegram icon",
+})``;
+
+const FacebookIcon = styled.img.attrs({
+  src: facebookIcon,
+  alt: "facebook icon",
+})``;
+
+const EmailIcon = styled.img.attrs({
+  src: emailIcon,
+  alt: "email icon",
+})``;
 
 export default Footer;

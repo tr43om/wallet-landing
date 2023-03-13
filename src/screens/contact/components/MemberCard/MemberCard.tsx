@@ -1,11 +1,11 @@
 import React from "react";
-import styled, { ThemeProps, useTheme } from "styled-components";
+import styled from "styled-components";
 import { MemberType } from "types";
-import { ReactComponent as TelegramIcon } from "assets/icons/socials/telegram.svg";
-import { ReactComponent as EmailIcon } from "assets/icons/socials/email.svg";
-import media, { MediaGenerator, DefaultBreakpoints } from "styled-media-query";
-import { useMediaQuery } from "react-responsive";
-import { DefaultTheme } from "styled-components";
+import telegramIcon from "assets/icons/socials/telegram.svg";
+import emailIcon from "assets/icons/socials/email.svg";
+import facebookIcon from "assets/icons/socials/facebook-alt.svg";
+import media from "styled-media-query";
+import { nanoid } from "nanoid";
 
 type MemberCardProps = {
   member: MemberType;
@@ -40,6 +40,28 @@ const MemberCard = ({ member, isTitleAbove = true }: MemberCardProps) => {
   );
 };
 
+const TelegramIcon = styled.img.attrs({
+  src: telegramIcon,
+  alt: "telegram icon",
+})`
+  filter: brightness(100);
+
+  &:hover {
+    opacity: 0.4;
+  }
+`;
+
+const EmailIcon = styled.img.attrs({
+  src: emailIcon,
+  alt: "email icon",
+})`
+  filter: brightness(100);
+
+  &:hover {
+    opacity: 0.4;
+  }
+`;
+
 const BottomCard = styled.div`
   display: grid;
   grid-row-start: 1;
@@ -53,7 +75,7 @@ const BottomCard = styled.div`
   padding-bottom: 40px;
   padding-top: 30px;
   min-width: 200px;
-  aspect-ratio: 1;
+  aspect-ratio: 1 / 1;
   background: #fff;
   border-radius: 8px;
 
@@ -97,17 +119,6 @@ const SocialsBadge = styled.div`
   a {
     height: 20px;
     width: 20px;
-  }
-
-  svg > g > path {
-    fill: #fff;
-  }
-
-  svg {
-    cursor: pointer;
-    &:hover {
-      opacity: 0.5;
-    }
   }
 
   ${media.greaterThan("large")`
@@ -172,7 +183,7 @@ const MemberPhoto = styled.div<{ $imgUrl: string; $retina?: string }>`
   width: 100%;
 
   object-fit: cover;
-  aspect-ratio: 1;
+  aspect-ratio: 1 / 1;
   border-radius: 8px;
   background-repeat: no-repeat;
   background-position: center;

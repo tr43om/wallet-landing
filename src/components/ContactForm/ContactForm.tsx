@@ -221,9 +221,9 @@ const Fieldset = styled.fieldset<{ $gap?: number; $mt?: number; $mb?: number }>`
   display: flex;
   flex-wrap: wrap;
   justify-content: space-between;
-  column-gap: ${({ $gap }) => `${$gap}px`};
-  margin-top: ${({ $mt }) => `${$mt}px`};
-  margin-bottom: ${({ $mb }) => `${$mb}px`};
+  column-gap: ${({ $gap }) => `${$gap ? $gap : 0}px`};
+  margin-top: ${({ $mt }) => `${$mt ? $mt : 0}px`};
+  margin-bottom: ${({ $mb }) => `${$mb ? $mb : 0}px`};
 
   row-gap: 15px;
 

@@ -20,35 +20,39 @@ const ResponsiveImage = ({
   ...delegated
 }: ResponsiveImageProps) => {
   const { devices } = useTheme();
-  const desktopSrcSet =
-    typeof desktop === "string"
-      ? desktop
-      : desktop?.map((q, i) => `${q} ${i + 1}x, `).join(" ");
 
-  const tabletSrcSet =
-    typeof tablet === "string"
-      ? tablet
-      : tablet?.map((q, i) => `${q} ${i + 1}x, `).join(" ");
+  const makeSrcset = (sources: string[] | string | undefined) => {
+    if (!sources) return "";
 
-  const mobileSrcSet =
-    typeof mobile === "string"
-      ? mobile
-      : mobile?.map((q, i) => `${q} ${i + 1}x, `).join(" ");
-
-  const sourcesSet = sources?.map((q, i) => `${q} ${i + 1}x, `).join(" ");
+    return typeof sources === "string"
+      ? sources
+      : sources.map((q, i) => `${q} ${i + 1}x`).join(", ");
+  };
 
   return (
     <picture>
       {desktop && (
-        <source srcSet={desktopSrcSet} type={type} media={devices.desktop} />
+        <source
+          srcSet={makeSrcset(desktop)}
+          type={type}
+          media={devices.desktop}
+        />
       )}
       {tablet && (
-        <source srcSet={tabletSrcSet} type={type} media={devices.tablet} />
+        <source
+          srcSet={makeSrcset(tablet)}
+          type={type}
+          media={devices.tablet}
+        />
       )}
       {mobile && (
-        <source srcSet={mobileSrcSet} type={type} media={devices.mobile} />
+        <source
+          srcSet={makeSrcset(mobile)}
+          type={type}
+          media={devices.mobile}
+        />
       )}
-      {sources && <source srcSet={sourcesSet} type={type} />}
+      {sources && <source srcSet={makeSrcset(sources)} type={type} />}
 
       <Image {...delegated} src={fallback} />
     </picture>

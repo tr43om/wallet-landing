@@ -32,7 +32,7 @@ const Root = styled.div`
 const Bullet = styled.div<{ $isActive: boolean }>`
   border-radius: 1000px;
   height: 8px;
-  aspect-ratio: 1;
+  aspect-ratio: 1 / 1;
   background-color: ${({ $isActive, theme }) =>
     $isActive ? theme.colors.primaryBlue : "#e6e6e6"};
 `;

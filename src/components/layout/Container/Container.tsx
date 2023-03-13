@@ -10,7 +10,7 @@ const Container = ({ children }: ContainerProps) => {
   return <Wrapper>{children}</Wrapper>;
 };
 
-const Wrapper = styled.section`
+const Wrapper = styled.div`
   padding-inline: 24px;
   position: relative;
   margin: 0 auto;

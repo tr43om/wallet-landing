@@ -49,12 +49,12 @@ const Root = styled.label`
   width: 100%;
 `;
 
-const Header = styled.div`
+const Header = styled.span`
   display: flex;
   justify-content: space-between;
 `;
 
-const Counter = styled.p`
+const Counter = styled.span`
   color: ${({ theme }) => theme.colors.secondaryActiveText};
 `;
 
@@ -94,7 +94,7 @@ const StyledTextArea = styled.textarea<{
   `}
 `;
 
-const Label = styled.label`
+const Label = styled.span`
   color: ${({ theme }) => theme.colors.secondaryActiveText};
   margin-bottom: 10px;
 `;

@@ -20,8 +20,8 @@ const Root = styled.span<{ $mt?: number; $mb?: number }>`
     return `
         font: ${variants.body5};
         color: ${colors.accent};
-        margin-bottom: ${$mb}px;
-        margin-top: ${$mt}px;
+        margin-bottom: ${$mb ? $mb : 0}px;
+        margin-top: ${$mt ? $mt : 0}px;
     `;
   }}
 `;

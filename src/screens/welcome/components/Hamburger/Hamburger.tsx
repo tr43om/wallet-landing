@@ -9,9 +9,9 @@ type HamProps = {
 const Hamburger = ({ isOpen, toggle }: HamProps) => {
   return (
     <StyledBurger $open={isOpen} onClick={toggle}>
-      <div></div>
-      <div></div>
-      <div></div>
+      <span></span>
+      <span></span>
+      <span></span>
     </StyledBurger>
   );
 };
@@ -35,7 +35,8 @@ const StyledBurger = styled.button<{ $open: boolean }>`
     outline: none;
   }
 
-  div {
+  span {
+    display: block;
     transform-origin: 2px;
 
     width: 22px;

@@ -65,7 +65,7 @@ const Crypto = styled.li`
 
 const CryptoIcon = styled.img`
   height: 40px;
-  aspect-ratio: 1;
+  aspect-ratio: 1 / 1;
 
   ${media.greaterThan("large")`
      height: 30px;
@@ -98,7 +98,8 @@ const CryptoFullName = styled.span`
   `}
 `;
 
-const CryptoPlaceholder = styled.div`
+const CryptoPlaceholder = styled.li`
+  all: unset;
   max-height: 2.8rem;
   display: flex;
   justify-self: start;

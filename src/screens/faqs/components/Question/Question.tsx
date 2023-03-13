@@ -55,7 +55,7 @@ const Root = styled.li`
 
 const Icon = styled.img`
   margin-right: 0.75rem;
-  aspect-ratio: 1;
+  aspect-ratio: 1 / 1;
   width: 38px;
 
   ${media.greaterThan("large")`

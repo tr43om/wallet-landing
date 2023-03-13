@@ -87,7 +87,7 @@ const Root = styled.article`
   `}
 `;
 
-const BlogInfo = styled.section<{ $imgUrl: string; $retina?: string }>`
+const BlogInfo = styled.div<{ $imgUrl: string; $retina?: string }>`
   height: 100%;
   min-height: 200px;
   max-height: 280px;

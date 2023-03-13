@@ -17,7 +17,7 @@ const FullWidthBlog = ({
   return (
     <Root>
       <ResponsiveImage
-        sources={[`${(imageUrl.webp, imageUrl.retina2x)}`]}
+        sources={[imageUrl.webp, imageUrl.retina2x]}
         fallback={imageUrl.fallback}
         alt={author.name}
       />
@@ -28,7 +28,7 @@ const FullWidthBlog = ({
         <Author>
           <Avatar
             fallback={author.avatarUrl.fallback}
-            sources={[`${(author.avatarUrl.webp, author.avatarUrl.retina2x)}`]}
+            sources={[author.avatarUrl.webp, author.avatarUrl.retina2x]}
             alt={author.name}
           />
           <AuthorAbout>
@@ -81,7 +81,6 @@ const Description = styled.p`
   text-overflow: ellipsis;
   display: -webkit-box;
   -webkit-line-clamp: 5;
-  line-clamp: 5;
   -webkit-box-orient: vertical;
 `;
 

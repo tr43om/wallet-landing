@@ -41,7 +41,7 @@ const Root = styled.label`
   display: grid;
 `;
 
-const Label = styled.p`
+const Label = styled.span`
   color: ${({ theme }) => theme.colors.secondaryActiveText};
   margin-bottom: 10px;
 `;
