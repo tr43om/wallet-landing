@@ -22,10 +22,10 @@ const MemberCard = ({ member, isTitleAbove = true }: MemberCardProps) => {
         >
           <SocialsBadge>
             <a href="#">
-              <TelegramIcon width={20} height={20} />
+              <TelegramIcon />
             </a>
             <a href="#">
-              <EmailIcon width={20} height={20} />
+              <EmailIcon />
             </a>
           </SocialsBadge>
         </MemberPhoto>
@@ -117,8 +117,32 @@ const SocialsBadge = styled.div`
   margin: 1rem;
 
   a {
-    height: 20px;
-    width: 20px;
+    position: relative;
+
+    width: 24px;
+    height: 24px;
+
+    &:not(:last-child):after {
+      content: "";
+      border-left: 0.4px solid rgba(0, 0, 0, 0.1);
+      position: absolute;
+      height: 31px;
+      top: -3px;
+      margin-left: 28px;
+    }
+
+    ${media.greaterThan("large")`
+        width: 20px;
+        height: 20px;
+        &:after {
+          display: none;
+        }
+    `}
+
+    img {
+      width: 100%;
+      max-width: 100%;
+    }
   }
 
   ${media.greaterThan("large")`
@@ -136,6 +160,10 @@ const Root = styled.li<{ $isTitleAbove: boolean }>`
   margin-top: ${({ $isTitleAbove }) => $isTitleAbove && "110px"};
 
   margin-left: ${({ $isTitleAbove }) => $isTitleAbove && "auto"};
+
+  &:not(:last-child) {
+    margin-bottom: 1.4rem;
+  }
 
   & > * {
     max-width: 244px;
