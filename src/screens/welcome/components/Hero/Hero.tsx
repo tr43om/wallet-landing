@@ -8,7 +8,7 @@ import { ReactComponent as StarIcon } from "assets/icons/other/star.svg";
 import appMobileIllustration from "assets/illustrations/app-mobile.webp";
 import appDesktopIllustration from "assets/illustrations/app-desktop.webp";
 import appDesktopFallback from "assets/photos/fallback/app-desktop@fallback.png";
-import appDesktopRetina from "assets/photos/@2x/app-desktop@2x.webp";
+import appDesktopRetina from "assets/photos/@2x/app-desktop@2x.png";
 
 import media from "styled-media-query";
 import { ResponsiveImage } from "components";
