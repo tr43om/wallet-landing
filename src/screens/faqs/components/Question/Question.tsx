@@ -15,7 +15,7 @@ const Question = ({ question, answer, iconUrl }: QuestionProps) => {
   const [opened, setOpened] = useState(false);
   const toggle = () => setOpened((open) => !open);
   return (
-    <Root onClick={toggle}>
+    <Root onClick={toggle} $opened={opened}>
       <Icon src={iconUrl} alt={question} />
       <QuestionText>{question}</QuestionText>
       {!opened ? (
@@ -29,7 +29,7 @@ const Question = ({ question, answer, iconUrl }: QuestionProps) => {
   );
 };
 
-const Root = styled.li`
+const Root = styled.li<{ $opened: boolean }>`
   display: flex;
   flex-wrap: wrap;
   cursor: pointer;
@@ -37,8 +37,9 @@ const Root = styled.li`
   list-style: none;
   width: 100%;
   border-radius: 1rem;
-  background: #ffffff;
+  background: ${({ $opened }) => ($opened ? "#FAFAFA" : "#FFFFFF")};
   box-shadow: 0px 4px 11px rgba(56, 57, 77, 0.1);
+  border-radius: 16px;
   padding-block: 16px;
   padding-right: 19px;
   padding-left: 15px;
