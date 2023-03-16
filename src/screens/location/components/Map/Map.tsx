@@ -14,7 +14,7 @@ import media from "styled-media-query";
 const Map = () => {
   return (
     <Root>
-      <ResponsiveImage
+      <StyledResponsiveImage
         fallback={mapMobileFallback}
         mobile={[mapMobileDefault, mapMobile2x]}
         desktop={[mapDesktopDefault, mapDesktop2x]}
@@ -24,6 +24,7 @@ const Map = () => {
   );
 };
 
+const StyledResponsiveImage = styled(ResponsiveImage)``;
 const Root = styled.div`
   display: flex;
 
@@ -32,6 +33,36 @@ const Root = styled.div`
     margin-left: -24px;
   }
   picture {
+    position: relative;
+    &::before {
+      content: "";
+      z-index: 10;
+
+      display: block;
+      position: absolute;
+      top: 0;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      width: 100%;
+      aspect-ratio: 1/1;
+      background: linear-gradient(
+          90deg,
+          #ffffff 0%,
+          rgba(255, 255, 255, 0.26) 14%,
+          rgba(255, 255, 255, 0) 49.42%,
+          rgba(255, 255, 255, 0.25) 86.92%,
+          #ffffff 100%
+        ),
+        linear-gradient(
+          180deg,
+          #ffffff 0%,
+          rgba(255, 255, 255, 0.4) 16.08%,
+          rgba(255, 255, 255, 0) 50.98%,
+          rgba(255, 255, 255, 0.4) 84.31%,
+          #ffffff 98.9%
+        );
+    }
     ${media.greaterThan("large")`
         margin-top: -65px;
         max-width: 100%;
