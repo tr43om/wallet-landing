@@ -12,11 +12,12 @@ interface ResponsiveImageProps
 
 const ResponsiveImage = ({
   fallback,
-  type,
+  type = "image/webp",
   desktop,
   mobile,
   tablet,
   sources,
+
   ...delegated
 }: ResponsiveImageProps) => {
   const { devices } = useTheme();

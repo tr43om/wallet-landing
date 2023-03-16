@@ -4,19 +4,16 @@ import styled from "styled-components";
 
 type PaginationProps = {
   active: number;
+  slides: number;
 };
 
-const Pagination = ({ active }: PaginationProps) => {
+const Pagination = ({ active, slides }: PaginationProps) => {
   const swiper = useSwiper();
 
   return (
     <Root>
-      {swiper.slides.map((_, i) => (
-        <Bullet
-          key={i}
-          $isActive={i === active}
-          onClick={() => swiper.slideTo(i)}
-        />
+      {Array.from({ length: slides }, (_, i) => i).map((_, i) => (
+        <Bullet $isActive={i === active}></Bullet>
       ))}
     </Root>
   );

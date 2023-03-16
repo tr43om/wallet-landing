@@ -10,19 +10,22 @@ import { blogs } from "data";
 
 const Slider = () => {
   const [activeSlide, setActiveSlide] = useState(0);
+  const [slides, setSlides] = useState(0);
+
   return (
     <Root>
       <StyledSwiper
         slidesPerView={1.18}
         spaceBetween={32}
         onSlideChange={(swiper) => setActiveSlide(swiper.activeIndex)}
+        onSwiper={(swiper) => setSlides(swiper.slides.length)}
       >
         {blogs.map((blog) => (
           <SwiperSlide>
             <Blog {...blog} />
           </SwiperSlide>
         ))}
-        <Pagination active={activeSlide} />
+        <Pagination active={activeSlide} slides={slides} />
       </StyledSwiper>
     </Root>
   );
